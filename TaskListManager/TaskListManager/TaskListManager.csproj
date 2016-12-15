@@ -46,51 +46,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="createTaskView.cs">
+    <Compile Include="Control\createTaskView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="createTaskView.Designer.cs">
+    <Compile Include="Control\createTaskView.Designer.cs">
       <DependentUpon>createTaskView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="optionButton.cs">
+    <Compile Include="Control\optionButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="optionButton.Designer.cs">
+    <Compile Include="Control\optionButton.Designer.cs">
       <DependentUpon>optionButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="taskView.cs">
+    <Compile Include="Control\taskView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="taskView.Designer.cs">
+    <Compile Include="Control\taskView.Designer.cs">
       <DependentUpon>taskView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="createTaskView.resx">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\taskItem.cs" />
+    <Compile Include="src\taskManager.cs" />
+    <EmbeddedResource Include="Control\createTaskView.resx">
       <DependentUpon>createTaskView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="optionButton.resx">
+    <EmbeddedResource Include="Control\optionButton.resx">
       <DependentUpon>optionButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="taskView.resx">
+    <EmbeddedResource Include="Control\taskView.resx">
       <DependentUpon>taskView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -105,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

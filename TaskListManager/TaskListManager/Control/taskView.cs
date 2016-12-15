@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TaskListManager.src;
 
 namespace TaskListManager
 {
@@ -15,33 +10,41 @@ namespace TaskListManager
         private Boolean isShowButton;
         private Label taskLabel;
         private optionButton optButton;
+        private taskItem task;
 
-        public taskView(String task, DateTime limit)
+        public taskView(taskItem task)
         {
             InitializeComponent();
 
             // 状態の初期設定
-            isShowButton = false;
+            this.isShowButton = false;
+            this.task = task;
 
             // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            //this.BorderStyle = BorderStyle.FixedSingle;
+            this.Margin = new Padding(0, 0, 0, 5);
 
-            // 各ビューの初期化
+            // タスク表示部の初期化
             this.taskLabel = new Label();
-            this.taskLabel.Text = task;
+            this.taskLabel.Text = task.Task;
             this.taskLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.taskLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            this.taskLabel.Margin = new Padding(0);
+            this.taskLabel.Padding = new Padding(5, 0, 0, 0);
+
             this.taskLabel.Click += Task_Click;
 
+            // オプションボタンの初期化
             this.optButton = new optionButton();
             this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            this.optButton.Margin = new Padding(0);
 
             // テーブルレイアウトに追加
             this.tableLayoutPanel1.Controls.Add(this.taskLabel);
             this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
 
             // ToDo: デバッグ用。あとで消すこと。
+            //this.BorderStyle = BorderStyle.FixedSingle;
             //this.taskLabel.BorderStyle = BorderStyle.FixedSingle;
             //this.tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
         }

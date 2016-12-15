@@ -50,6 +50,7 @@
             this.taskTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.taskTextBox.Location = new System.Drawing.Point(3, 20);
+            this.taskTextBox.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.taskTextBox.Name = "taskTextBox";
             this.taskTextBox.Size = new System.Drawing.Size(286, 19);
             this.taskTextBox.TabIndex = 1;
@@ -68,6 +69,7 @@
             this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker.Location = new System.Drawing.Point(3, 57);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(286, 19);
             this.dateTimePicker.TabIndex = 3;
@@ -104,9 +106,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.taskTextBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "createTaskView";
-            this.Size = new System.Drawing.Size(292, 109);
+            this.Size = new System.Drawing.Size(292, 110);
             this.ResumeLayout(false);
             this.PerformLayout();
 
