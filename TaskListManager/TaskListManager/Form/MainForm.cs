@@ -7,121 +7,132 @@ namespace TaskListManager
 {
     public partial class MainForm : Form
     {
+        TaskEditView taskEditView;
+
         public MainForm()
         {
             InitializeComponent();
 
-            TableLayoutPanel taskList = (TableLayoutPanel)this.mainPanel.GetControlFromPosition(0, 0);
-            this.mainPanel.SetRowSpan(taskList, 2);
+            // タスク編集画面の初期化
+            this.taskEditView = new TaskEditView();
+            this.taskEditView.okEvent += okButton_Click;
+            this.taskEditView.cancelEvent += cancelButton_Click;
+
+            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             TaskManager manager = TaskManager.getInstance();
-            List<TaskItem> list = manager.getTaskList();
+            List<TaskItem> taskList = manager.getTaskList();
 
-            foreach(TaskItem item in list)
+            foreach(TaskItem task in taskList)
             {
-                TaskView v = new TaskView(item);
-                v.doneButton_Click += done;
-                v.editButton_Click += edit;
-
-                this.taskListPanel.Controls.Add(v);
+                addTaskView(task);
             }
+        }
+
+        // タスクを画面上のリストに追加する
+        private void addTaskView(TaskItem task)
+        {
+            TaskView view = new TaskView(task);
+            view.doneButton_Click += done;
+            view.editButton_Click += edit;
+
+            this.taskListPanel.Controls.Add(view);
+        }
+
+        // タスクの編集画面を表示する
+        private void showTaskEditView()
+        {
+            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
+            this.mainPanel.SetRow(this.taskListPanel, 1);
+
+            this.mainPanel.Controls.Add(this.taskEditView);
+            this.mainPanel.SetRow(this.taskEditView, 0);
+
+            this.addButton.Enabled = false;
+        }
+
+        // タスクの編集画面を非表示にする
+        private void hideTaskEditView()
+        {
+            this.mainPanel.Controls.Remove(this.taskEditView);
+            this.mainPanel.SetRow(this.taskListPanel, 0);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
+
+            this.addButton.Enabled = true;
         }
 
         // 「タスクの追加」ボタンを押したときのイベント
         private void addButton_Click(object sender, EventArgs e)
         {
-            TaskEditView view = new TaskEditView();
-            view.okEvent += okButton_Click;
-            view.cancelEvent += cancelButton_Click;
-
-            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
-            this.mainPanel.SetRow(this.taskListPanel, 1);
-
-            this.mainPanel.Controls.Add(view);
-            this.mainPanel.SetRow(view, 0);
-
-            this.addButton.Enabled = false;
+            showTaskEditView();
         }
 
         // タスク追加画面で「OK」ボタンを押したときのイベント
         private void okButton_Click(object sender, EventArgs e)
         {
-            TaskEditView v = (TaskEditView)sender;
             TaskManager manager = TaskManager.getInstance();
+            long id = this.taskEditView.ID;
 
-            if (true == v.getIsEdit())
+            if(id < 0) // 新規タスク追加
             {
-                manager.editTaskById(v.ID, v.Task, v.Deadline);
+                TaskItem task = new TaskItem(this.taskEditView.Task, this.taskEditView.Deadline);
+                manager.addTask(task);
+                addTaskView(task);
+            }
+            else  // 既存タスク編集
+            {
+                TaskItem taskItem = manager.getTaskItemByID(id);
 
-                for(int i=0; i < this.taskListPanel.Controls.Count; i++)
+                taskItem.Task = this.taskEditView.Task;
+                taskItem.Deadline = this.taskEditView.Deadline;
+
+                for(int i=0; i<this.taskListPanel.Controls.Count; i++)
                 {
-                    TaskView tv = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
+                    TaskView taskView = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
 
-                    if (v.ID == tv.getTask().ID)
+                    if(id == taskView.getTaskItemID())
                     {
-                        tv.TaskText = v.Task;
+                        taskView.setTaskItem(taskItem);
                     }
                 }
             }
-            else
-            {
-                TaskItem task = new TaskItem(v.Task, v.Deadline);
-                manager.addTask(task);
-
-                TaskView view = new TaskView(task);
-                view.doneButton_Click += done;
-                view.editButton_Click += edit;
-
-                this.taskListPanel.Controls.Add(view);
-            }
-
-            this.mainPanel.Controls.Remove((TaskEditView)sender);
-            this.mainPanel.SetRow(this.taskListPanel, 0);
-            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
-
+            
             manager.saveTaskList();
 
-            this.addButton.Enabled = true;
+            hideTaskEditView();
         }
 
         // タスクの追加画面で「Cancel」ボタンを押したときのイベント
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.mainPanel.Controls.Remove((TaskEditView)sender);
-            this.mainPanel.SetRow(this.taskListPanel, 0);
-            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
-
-            this.addButton.Enabled = true;
+            hideTaskEditView();
         }
 
         // タスクの完了イベント
         private void done(object sender)
         {
-            TaskView v = (TaskView)sender;
+            TaskView taskView = (TaskView)sender;
             TaskManager manager = TaskManager.getInstance();
 
-            this.taskListPanel.Controls.Remove(v);
-                      
-            manager.deleteTaskById(v.getTask().ID);
+            this.taskListPanel.Controls.Remove(taskView);
+
+            manager.deleteTaskById(taskView.getTaskItemID());
             manager.saveTaskList();
+
+            // 後片付け
+            taskView = null;
         }
 
         // タスクの編集イベント
         private void edit(object sender)
         {
-            TaskItem item = ((TaskView)sender).getTask();
+            TaskItem taskItem = TaskManager.getInstance().getTaskItemByID(((TaskView)sender).getTaskItemID());
 
-            TaskEditView v = new TaskEditView(item);
-            v.okEvent += okButton_Click;
-            v.cancelEvent += cancelButton_Click;
-
-            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
-            this.mainPanel.SetRow(this.taskListPanel, 1);
-
-            this.mainPanel.Controls.Add(v);
-            this.mainPanel.SetRow(v, 0);
-
-            this.addButton.Enabled = false;
+            if(null != taskItem)
+            {
+                this.taskEditView.reflectTaskItem(taskItem);
+            }
+            showTaskEditView();
         }
     }
 }

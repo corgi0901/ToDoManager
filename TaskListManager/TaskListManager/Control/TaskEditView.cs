@@ -6,11 +6,7 @@ namespace TaskListManager
 {
     public partial class TaskEditView : UserControl
     {
-        public String task;
-        public DateTime deadline;
-        public long id;
-
-        private Boolean isEdit;
+        private long id;
 
         public String Task
         {
@@ -34,35 +30,35 @@ namespace TaskListManager
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            this.isEdit = false;
+            reset();
         }
 
-        public TaskEditView(TaskItem item)
+        // 指定されたタスクの内容をビューに反映する
+        public void reflectTaskItem(TaskItem task)
         {
-            InitializeComponent();
-            this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            this.taskTextBox.Text = item.Task;
-            this.dateTimePicker.Value = item.Deadline;
-            this.id = item.ID;
-
-            this.isEdit = true;
+            this.Task = task.Task;
+            this.Deadline = task.Deadline;
+            this.ID = task.ID;
         }
 
-        public Boolean getIsEdit()
+        // 諸々の設定をリセット
+        private void reset()
         {
-            return isEdit;
+            this.taskTextBox.Text = "";
+            this.dateTimePicker.Value = DateTime.Now;
+            this.id = -1;
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
             this.okEvent(this, new EventArgs());
+            reset();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.cancelEvent(this, new EventArgs());
+            reset();
         }
 
         public delegate void CreateTaskViewEventHandler(object sender, EventArgs e);

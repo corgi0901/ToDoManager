@@ -4,9 +4,9 @@ namespace TaskListManager.src
 {
     public class TaskItem
     {
-        public String task;
-        public DateTime deadline;
-        public long id;
+        private String task;
+        private DateTime deadline;
+        private long id;
 
         public TaskItem()
         {

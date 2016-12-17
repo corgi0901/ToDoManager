@@ -38,15 +38,7 @@ namespace TaskListManager.src
             return instance;
         }
 
-        // タスクを生成する
-        public TaskItem createTask(String task, DateTime deadline)
-        {
-            TaskItem item = new TaskItem(task, deadline);
-            this.taskList.Add(item);
-
-            return item;
-        }
-
+        // タスクを追加する
         public void addTask(TaskItem item)
         {
             this.taskList.Add(item);
@@ -68,20 +60,21 @@ namespace TaskListManager.src
             }
         }
         
-        // 指定したIDのタスクを編集
-        public void editTaskById(long id, String task, DateTime deadline)
+        // 指定したIDのタスクを取得する
+        public TaskItem getTaskItemByID(long id)
         {
-            for(int i = 0; i < this.taskList.Count; i++)
-            {
-                TaskItem item = this.taskList[i];
+            TaskItem item = null;
 
-                if(id == item.ID)
+            for(int i=0; i<this.taskList.Count; i++)
+            {
+                if(id == this.taskList[i].ID)
                 {
-                    item.Task = task;
-                    item.Deadline = deadline;
+                    item = this.taskList[i];
                     break;
                 }
-            }          
+            }
+
+            return item;
         }
 
         // タスクのリストを取得

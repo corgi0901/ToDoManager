@@ -10,36 +10,18 @@ namespace TaskListManager
         private Boolean isShowButton;
         private Label taskLabel;
         private TaskOptionPanel optButton;
-        private TaskItem task;
-
-        public String taskText;
-        //public DateTime Deadline;
+        private long ID;
 
         public delegate void optionButtonEventHandler(object sender);
         public event optionButtonEventHandler doneButton_Click;
         public event optionButtonEventHandler editButton_Click;
 
-        public String TaskText
-        {
-            get { return this.taskLabel.Text; }
-            set { this.taskLabel.Text = value; }
-        }
-
-        /*
-        public DateTime Deadline
-        {
-            get { return this.dateTimePicker.Value; }
-            set { this.dateTimePicker.Value = value; }
-        }
-        */
-
-        public TaskView(TaskItem task)
+        public TaskView(TaskItem taskItem)
         {
             InitializeComponent();
 
             // 状態の初期設定
             this.isShowButton = false;
-            this.task = task;
 
             // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -47,12 +29,10 @@ namespace TaskListManager
 
             // タスク表示部の初期化
             this.taskLabel = new Label();
-            this.taskLabel.Text = task.Task;
             this.taskLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.taskLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             this.taskLabel.Margin = new Padding(0);
             this.taskLabel.Padding = new Padding(5, 0, 0, 0);
-
             this.taskLabel.Click += Task_Click;
 
             // オプションボタンの初期化
@@ -62,21 +42,25 @@ namespace TaskListManager
             this.optButton.doneEvent += doneButtun_ClickEvent;
             this.optButton.editEvent += editButtun_ClickEvent;
 
-
             // テーブルレイアウトに追加
             this.tableLayoutPanel1.Controls.Add(this.taskLabel);
             this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
 
-            // ToDo: デバッグ用。あとで消すこと。
-            //this.BorderStyle = BorderStyle.FixedSingle;
-            //this.taskLabel.BorderStyle = BorderStyle.FixedSingle;
-            //this.tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            // タスクの内容を反映
+            setTaskItem(taskItem);
         }
 
-        // タスクを取得する
-        public TaskItem getTask()
+        // 表示されているタスクを取得する
+        public long getTaskItemID()
         {
-            return this.task;
+            return this.ID;
+        }
+
+        // 表示するタスクを設定する
+        public void setTaskItem(TaskItem taskItem)
+        {
+            this.ID = taskItem.ID;
+            this.taskLabel.Text = taskItem.Task;
         }
 
         // タスクの内容がクリックされたときの処理
@@ -101,12 +85,20 @@ namespace TaskListManager
         // 「完了」ボタンをクリックしたときの処理
         private void doneButtun_ClickEvent()
         {
+            this.tableLayoutPanel1.Controls.Remove(this.optButton);
+            this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+            this.isShowButton = false;
+
             doneButton_Click(this);
         }
 
         // 「編集」ボタンをクリックしたときの処理
         private void editButtun_ClickEvent()
         {
+            this.tableLayoutPanel1.Controls.Remove(this.optButton);
+            this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+            this.isShowButton = false;
+
             editButton_Click(this);
         }
     }
