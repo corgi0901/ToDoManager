@@ -1,6 +1,6 @@
 ﻿namespace TaskListManager
 {
-    partial class optionButton
+    partial class TaskOptionPanel
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

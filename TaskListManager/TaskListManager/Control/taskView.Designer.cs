@@ -1,6 +1,6 @@
 ﻿namespace TaskListManager
 {
-    partial class taskView
+    partial class TaskView
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

@@ -5,12 +5,12 @@ using TaskListManager.src;
 
 namespace TaskListManager
 {
-    public partial class taskView : UserControl
+    public partial class TaskView : UserControl
     {
         private Boolean isShowButton;
         private Label taskLabel;
-        private optionButton optButton;
-        private taskItem task;
+        private TaskOptionPanel optButton;
+        private TaskItem task;
 
         public String taskText;
         //public DateTime Deadline;
@@ -33,7 +33,7 @@ namespace TaskListManager
         }
         */
 
-        public taskView(taskItem task)
+        public TaskView(TaskItem task)
         {
             InitializeComponent();
 
@@ -56,7 +56,7 @@ namespace TaskListManager
             this.taskLabel.Click += Task_Click;
 
             // オプションボタンの初期化
-            this.optButton = new optionButton();
+            this.optButton = new TaskOptionPanel();
             this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             this.optButton.Margin = new Padding(0);
             this.optButton.doneEvent += doneButtun_ClickEvent;
@@ -74,7 +74,7 @@ namespace TaskListManager
         }
 
         // タスクを取得する
-        public taskItem getTask()
+        public TaskItem getTask()
         {
             return this.task;
         }

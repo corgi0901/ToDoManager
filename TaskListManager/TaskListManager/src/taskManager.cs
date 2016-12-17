@@ -3,51 +3,51 @@ using System.Collections.Generic;
 
 namespace TaskListManager.src
 {
-    class taskManager
+    class TaskManager
     {
         private const String confName = "taskList.xml";
-        private List<taskItem> taskList;
-        private static taskManager instance = null;
+        private List<TaskItem> taskList;
+        private static TaskManager instance = null;
 
         // プライベートコンストラクタ
-        private taskManager()
+        private TaskManager()
         {
             try
             {
                 using (System.IO.TextReader reader = new System.IO.StreamReader(confName))
                 {
-                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<taskItem>));
-                    this.taskList = (List<taskItem>)serializer.Deserialize(reader);
+                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<TaskItem>));
+                    this.taskList = (List<TaskItem>)serializer.Deserialize(reader);
                 }
             }
             catch (System.IO.FileNotFoundException)
             {
                 // ファイルがない場合(初回起動時など)は空リストを作る
-                this.taskList = new List<taskItem>();
+                this.taskList = new List<TaskItem>();
             }
         }
 
         // シングルトンインスタンスの取得
-        public static taskManager getInstance()
+        public static TaskManager getInstance()
         {
             if (null == instance)
             {
-                instance = new taskManager();
+                instance = new TaskManager();
             }
 
             return instance;
         }
 
         // タスクを生成する
-        public taskItem createTask(String task, DateTime deadline)
+        public TaskItem createTask(String task, DateTime deadline)
         {
-            taskItem item = new taskItem(task, deadline);
+            TaskItem item = new TaskItem(task, deadline);
             this.taskList.Add(item);
 
             return item;
         }
 
-        public void addTask(taskItem item)
+        public void addTask(TaskItem item)
         {
             this.taskList.Add(item);
 
@@ -58,7 +58,7 @@ namespace TaskListManager.src
         {
             for (int i = 0; i < this.taskList.Count; i++)
             {
-                taskItem task = this.taskList[i];
+                TaskItem task = this.taskList[i];
 
                 if (task.ID == id)
                 {
@@ -73,7 +73,7 @@ namespace TaskListManager.src
         {
             for(int i = 0; i < this.taskList.Count; i++)
             {
-                taskItem item = this.taskList[i];
+                TaskItem item = this.taskList[i];
 
                 if(id == item.ID)
                 {
@@ -85,7 +85,7 @@ namespace TaskListManager.src
         }
 
         // タスクのリストを取得
-        public List<taskItem> getTaskList()
+        public List<TaskItem> getTaskList()
         {
             return this.taskList;
         }
@@ -95,7 +95,7 @@ namespace TaskListManager.src
         {
             using (System.IO.TextWriter writer = new System.IO.StreamWriter(confName))
             {
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<taskItem>));
+                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<TaskItem>));
                 serializer.Serialize(writer, this.taskList);
             }
         }

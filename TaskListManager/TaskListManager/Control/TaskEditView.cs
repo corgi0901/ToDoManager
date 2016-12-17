@@ -4,7 +4,7 @@ using TaskListManager.src;
 
 namespace TaskListManager
 {
-    public partial class createTaskView : UserControl
+    public partial class TaskEditView : UserControl
     {
         public String task;
         public DateTime deadline;
@@ -30,7 +30,7 @@ namespace TaskListManager
             set { this.id = value; }
         }
 
-        public createTaskView()
+        public TaskEditView()
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -38,7 +38,7 @@ namespace TaskListManager
             this.isEdit = false;
         }
 
-        public createTaskView(taskItem item)
+        public TaskEditView(TaskItem item)
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;

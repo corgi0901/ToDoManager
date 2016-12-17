@@ -1,6 +1,6 @@
 ﻿namespace TaskListManager
 {
-    partial class createTaskView
+    partial class TaskEditView
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

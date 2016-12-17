@@ -3,13 +3,13 @@ using System.Windows.Forms;
 
 namespace TaskListManager
 {
-    public partial class optionButton : UserControl
+    public partial class TaskOptionPanel : UserControl
     {
         public delegate void optionButtonEventHandler();
         public event optionButtonEventHandler doneEvent;
         public event optionButtonEventHandler editEvent;
 
-        public optionButton()
+        public TaskOptionPanel()
         {
             InitializeComponent();
         }

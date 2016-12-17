@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\createTaskView.cs">
+    <Compile Include="Control\TaskEditView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\createTaskView.Designer.cs">
-      <DependentUpon>createTaskView.cs</DependentUpon>
+    <Compile Include="Control\TaskEditView.Designer.cs">
+      <DependentUpon>TaskEditView.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
@@ -58,43 +58,43 @@
     <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\optionButton.cs">
+    <Compile Include="Control\TaskOptionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\optionButton.Designer.cs">
-      <DependentUpon>optionButton.cs</DependentUpon>
+    <Compile Include="Control\TaskOptionPanel.Designer.cs">
+      <DependentUpon>TaskOptionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Control\taskView.cs">
+    <Compile Include="Control\TaskView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\taskView.Designer.cs">
-      <DependentUpon>taskView.cs</DependentUpon>
+    <Compile Include="Control\TaskView.Designer.cs">
+      <DependentUpon>TaskView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="src\taskItem.cs" />
-    <Compile Include="src\taskManager.cs" />
-    <EmbeddedResource Include="Control\createTaskView.resx">
-      <DependentUpon>createTaskView.cs</DependentUpon>
+    <Compile Include="src\TaskItem.cs" />
+    <Compile Include="src\TaskManager.cs" />
+    <EmbeddedResource Include="Control\TaskEditView.resx">
+      <DependentUpon>TaskEditView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\optionButton.resx">
-      <DependentUpon>optionButton.cs</DependentUpon>
+    <EmbeddedResource Include="Control\TaskOptionPanel.resx">
+      <DependentUpon>TaskOptionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\taskView.resx">
-      <DependentUpon>taskView.cs</DependentUpon>
+    <EmbeddedResource Include="Control\TaskView.resx">
+      <DependentUpon>TaskView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

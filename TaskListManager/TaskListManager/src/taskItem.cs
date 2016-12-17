@@ -2,17 +2,17 @@
 
 namespace TaskListManager.src
 {
-    public class taskItem
+    public class TaskItem
     {
         public String task;
         public DateTime deadline;
         public long id;
 
-        public taskItem()
+        public TaskItem()
         {
         }
 
-        public taskItem(String task, DateTime deadline)
+        public TaskItem(String task, DateTime deadline)
         {
             this.task = task;
             this.deadline = deadline;

@@ -11,34 +11,34 @@ namespace TaskListManager
         {
             InitializeComponent();
 
-            TableLayoutPanel taskList = (TableLayoutPanel)this.tableLayoutPanel.GetControlFromPosition(0, 0);
-            this.tableLayoutPanel.SetRowSpan(taskList, 2);
+            TableLayoutPanel taskList = (TableLayoutPanel)this.mainPanel.GetControlFromPosition(0, 0);
+            this.mainPanel.SetRowSpan(taskList, 2);
 
-            taskManager manager = taskManager.getInstance();
-            List<taskItem> list = manager.getTaskList();
+            TaskManager manager = TaskManager.getInstance();
+            List<TaskItem> list = manager.getTaskList();
 
-            foreach(taskItem item in list)
+            foreach(TaskItem item in list)
             {
-                taskView v = new taskView(item);
+                TaskView v = new TaskView(item);
                 v.doneButton_Click += done;
                 v.editButton_Click += edit;
 
-                this.taskTableLayoutPanel.Controls.Add(v);
+                this.taskListPanel.Controls.Add(v);
             }
         }
 
         // 「タスクの追加」ボタンを押したときのイベント
         private void addButton_Click(object sender, EventArgs e)
         {
-            createTaskView v = new createTaskView();
-            v.okEvent += okButton_Click;
-            v.cancelEvent += cancelButton_Click;
+            TaskEditView view = new TaskEditView();
+            view.okEvent += okButton_Click;
+            view.cancelEvent += cancelButton_Click;
 
-            this.tableLayoutPanel.SetRowSpan(this.taskTableLayoutPanel, 1);
-            this.tableLayoutPanel.SetRow(this.taskTableLayoutPanel, 1);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
+            this.mainPanel.SetRow(this.taskListPanel, 1);
 
-            this.tableLayoutPanel.Controls.Add(v);
-            this.tableLayoutPanel.SetRow(v, 0);
+            this.mainPanel.Controls.Add(view);
+            this.mainPanel.SetRow(view, 0);
 
             this.addButton.Enabled = false;
         }
@@ -46,16 +46,16 @@ namespace TaskListManager
         // タスク追加画面で「OK」ボタンを押したときのイベント
         private void okButton_Click(object sender, EventArgs e)
         {
-            createTaskView v = (createTaskView)sender;
-            taskManager manager = taskManager.getInstance();
+            TaskEditView v = (TaskEditView)sender;
+            TaskManager manager = TaskManager.getInstance();
 
             if (true == v.getIsEdit())
             {
                 manager.editTaskById(v.ID, v.Task, v.Deadline);
 
-                for(int i=0; i < this.taskTableLayoutPanel.Controls.Count; i++)
+                for(int i=0; i < this.taskListPanel.Controls.Count; i++)
                 {
-                    taskView tv = (taskView)this.taskTableLayoutPanel.GetControlFromPosition(0, i);
+                    TaskView tv = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
 
                     if (v.ID == tv.getTask().ID)
                     {
@@ -65,19 +65,19 @@ namespace TaskListManager
             }
             else
             {
-                taskItem task = new taskItem(v.Task, v.Deadline);
+                TaskItem task = new TaskItem(v.Task, v.Deadline);
                 manager.addTask(task);
 
-                taskView view = new taskView(task);
+                TaskView view = new TaskView(task);
                 view.doneButton_Click += done;
                 view.editButton_Click += edit;
 
-                this.taskTableLayoutPanel.Controls.Add(view);
+                this.taskListPanel.Controls.Add(view);
             }
 
-            this.tableLayoutPanel.Controls.Remove((createTaskView)sender);
-            this.tableLayoutPanel.SetRow(this.taskTableLayoutPanel, 0);
-            this.tableLayoutPanel.SetRowSpan(this.taskTableLayoutPanel, 2);
+            this.mainPanel.Controls.Remove((TaskEditView)sender);
+            this.mainPanel.SetRow(this.taskListPanel, 0);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             manager.saveTaskList();
 
@@ -87,9 +87,9 @@ namespace TaskListManager
         // タスクの追加画面で「Cancel」ボタンを押したときのイベント
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.tableLayoutPanel.Controls.Remove((createTaskView)sender);
-            this.tableLayoutPanel.SetRow(this.taskTableLayoutPanel, 0);
-            this.tableLayoutPanel.SetRowSpan(this.taskTableLayoutPanel, 2);
+            this.mainPanel.Controls.Remove((TaskEditView)sender);
+            this.mainPanel.SetRow(this.taskListPanel, 0);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             this.addButton.Enabled = true;
         }
@@ -97,10 +97,10 @@ namespace TaskListManager
         // タスクの完了イベント
         private void done(object sender)
         {
-            taskView v = (taskView)sender;
-            taskManager manager = taskManager.getInstance();
+            TaskView v = (TaskView)sender;
+            TaskManager manager = TaskManager.getInstance();
 
-            this.taskTableLayoutPanel.Controls.Remove(v);
+            this.taskListPanel.Controls.Remove(v);
                       
             manager.deleteTaskById(v.getTask().ID);
             manager.saveTaskList();
@@ -109,17 +109,17 @@ namespace TaskListManager
         // タスクの編集イベント
         private void edit(object sender)
         {
-            taskItem item = ((taskView)sender).getTask();
+            TaskItem item = ((TaskView)sender).getTask();
 
-            createTaskView v = new createTaskView(item);
+            TaskEditView v = new TaskEditView(item);
             v.okEvent += okButton_Click;
             v.cancelEvent += cancelButton_Click;
 
-            this.tableLayoutPanel.SetRowSpan(this.taskTableLayoutPanel, 1);
-            this.tableLayoutPanel.SetRow(this.taskTableLayoutPanel, 1);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
+            this.mainPanel.SetRow(this.taskListPanel, 1);
 
-            this.tableLayoutPanel.Controls.Add(v);
-            this.tableLayoutPanel.SetRow(v, 0);
+            this.mainPanel.Controls.Add(v);
+            this.mainPanel.SetRow(v, 0);
 
             this.addButton.Enabled = false;
         }
