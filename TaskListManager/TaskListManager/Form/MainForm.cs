@@ -49,6 +49,7 @@ namespace TaskListManager
             this.mainPanel.SetRow(this.taskEditView, 0);
 
             this.addButton.Enabled = false;
+            this.addButton.BackgroundImage = Properties.Resources.plus_disable;
         }
 
         // タスクの編集画面を非表示にする
@@ -59,6 +60,7 @@ namespace TaskListManager
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             this.addButton.Enabled = true;
+            this.addButton.BackgroundImage = Properties.Resources.plus_enable;
         }
 
         // 「タスクの追加」ボタンを押したときのイベント

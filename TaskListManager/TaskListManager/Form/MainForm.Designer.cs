@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.addButton = new System.Windows.Forms.Button();
             this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.addButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(3, 4);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 0;
-            this.addButton.Text = "新しいタスク";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // taskListPanel
             // 
@@ -77,6 +67,20 @@
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainPanel.Size = new System.Drawing.Size(330, 617);
             this.mainPanel.TabIndex = 2;
+            // 
+            // addButton
+            // 
+            this.addButton.BackgroundImage = global::TaskListManager.Properties.Resources.plus_enable;
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addButton.FlatAppearance.BorderSize = 0;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.addButton.Location = new System.Drawing.Point(9, 9);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(15, 15);
+            this.addButton.TabIndex = 0;
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // MainForm
             // 
