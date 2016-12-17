@@ -12,6 +12,27 @@ namespace TaskListManager
         private optionButton optButton;
         private taskItem task;
 
+        public String taskText;
+        //public DateTime Deadline;
+
+        public delegate void optionButtonEventHandler(object sender);
+        public event optionButtonEventHandler doneButton_Click;
+        public event optionButtonEventHandler editButton_Click;
+
+        public String TaskText
+        {
+            get { return this.taskLabel.Text; }
+            set { this.taskLabel.Text = value; }
+        }
+
+        /*
+        public DateTime Deadline
+        {
+            get { return this.dateTimePicker.Value; }
+            set { this.dateTimePicker.Value = value; }
+        }
+        */
+
         public taskView(taskItem task)
         {
             InitializeComponent();
@@ -38,6 +59,9 @@ namespace TaskListManager
             this.optButton = new optionButton();
             this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             this.optButton.Margin = new Padding(0);
+            this.optButton.doneEvent += doneButtun_ClickEvent;
+            this.optButton.editEvent += editButtun_ClickEvent;
+
 
             // テーブルレイアウトに追加
             this.tableLayoutPanel1.Controls.Add(this.taskLabel);
@@ -47,6 +71,12 @@ namespace TaskListManager
             //this.BorderStyle = BorderStyle.FixedSingle;
             //this.taskLabel.BorderStyle = BorderStyle.FixedSingle;
             //this.tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+        }
+
+        // タスクを取得する
+        public taskItem getTask()
+        {
+            return this.task;
         }
 
         // タスクの内容がクリックされたときの処理
@@ -65,10 +95,19 @@ namespace TaskListManager
                 this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
 
                 this.isShowButton = false;
-            }
-            
+            }   
+        }
 
-            
+        // 「完了」ボタンをクリックしたときの処理
+        private void doneButtun_ClickEvent()
+        {
+            doneButton_Click(this);
+        }
+
+        // 「編集」ボタンをクリックしたときの処理
+        private void editButtun_ClickEvent()
+        {
+            editButton_Click(this);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TaskListManager.src;
 
 namespace TaskListManager
 {
@@ -7,6 +8,9 @@ namespace TaskListManager
     {
         public String task;
         public DateTime deadline;
+        public long id;
+
+        private Boolean isEdit;
 
         public String Task
         {
@@ -20,10 +24,35 @@ namespace TaskListManager
             set { this.dateTimePicker.Value = value; }
         }
 
+        public long ID
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
         public createTaskView()
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            this.isEdit = false;
+        }
+
+        public createTaskView(taskItem item)
+        {
+            InitializeComponent();
+            this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            this.taskTextBox.Text = item.Task;
+            this.dateTimePicker.Value = item.Deadline;
+            this.id = item.ID;
+
+            this.isEdit = true;
+        }
+
+        public Boolean getIsEdit()
+        {
+            return isEdit;
         }
 
         private void okButton_Click(object sender, EventArgs e)

@@ -68,6 +68,23 @@ namespace TaskListManager.src
             }
         }
         
+        // 指定したIDのタスクを編集
+        public void editTaskById(long id, String task, DateTime deadline)
+        {
+            for(int i = 0; i < this.taskList.Count; i++)
+            {
+                taskItem item = this.taskList[i];
+
+                if(id == item.ID)
+                {
+                    item.Task = task;
+                    item.Deadline = deadline;
+                    break;
+                }
+            }          
+        }
+
+        // タスクのリストを取得
         public List<taskItem> getTaskList()
         {
             return this.taskList;

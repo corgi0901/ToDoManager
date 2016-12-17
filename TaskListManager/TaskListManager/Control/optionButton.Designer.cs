@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.doneButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // doneButton
@@ -48,26 +48,26 @@
             this.doneButton.UseVisualStyleBackColor = false;
             this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
-            // deleteButton
+            // editButton
             // 
-            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.BackColor = System.Drawing.Color.Silver;
-            this.deleteButton.FlatAppearance.BorderSize = 0;
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(50, 0);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(50, 50);
-            this.deleteButton.TabIndex = 1;
-            this.deleteButton.Text = "編集";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.editButton.BackColor = System.Drawing.Color.Silver;
+            this.editButton.FlatAppearance.BorderSize = 0;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(50, 0);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(50, 50);
+            this.editButton.TabIndex = 1;
+            this.editButton.Text = "編集";
+            this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // optionButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.doneButton);
             this.Name = "optionButton";
             this.Size = new System.Drawing.Size(100, 50);
@@ -78,6 +78,6 @@
         #endregion
 
         private System.Windows.Forms.Button doneButton;
-        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button editButton;
     }
 }

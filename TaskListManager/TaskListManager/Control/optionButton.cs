@@ -5,6 +5,10 @@ namespace TaskListManager
 {
     public partial class optionButton : UserControl
     {
+        public delegate void optionButtonEventHandler();
+        public event optionButtonEventHandler doneEvent;
+        public event optionButtonEventHandler editEvent;
+
         public optionButton()
         {
             InitializeComponent();
@@ -12,14 +16,12 @@ namespace TaskListManager
 
         private void doneButton_Click(object sender, EventArgs e)
         {
-            // ToDO
-            // タスクの削除処理を書く
+            this.doneEvent();
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void editButton_Click(object sender, EventArgs e)
         {
-            // ToDo
-            // タスクの編集処理を書く
+            this.editEvent();
         }
     }
 }
