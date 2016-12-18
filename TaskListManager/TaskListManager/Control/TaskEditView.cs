@@ -16,8 +16,8 @@ namespace TaskListManager
 
         public DateTime Deadline
         {
-            get { return this.dateTimePicker.Value; }
-            set { this.dateTimePicker.Value = value; }
+            get { return getDeadLine(); }
+            set { setDeadLine(value); }
         }
 
         public long ID
@@ -41,11 +41,26 @@ namespace TaskListManager
             this.ID = task.ID;
         }
 
+        private void setDeadLine(DateTime deadline)
+        {
+            this.datePicker.Value = deadline;
+            this.timePicker.Value = deadline;
+        }
+
+        private DateTime getDeadLine()
+        {
+            DateTime day = this.datePicker.Value;
+            DateTime time = this.timePicker.Value;
+
+            return new DateTime(day.Year, day.Month, day.Day, time.Hour, time.Minute, 0);
+        }
+
         // 諸々の設定をリセット
         private void reset()
         {
             this.taskTextBox.Text = "";
-            this.dateTimePicker.Value = DateTime.Now;
+            this.datePicker.Value = DateTime.Now;
+            this.timePicker.Value = DateTime.Parse("12:00");
             this.id = -1;
         }
 

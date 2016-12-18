@@ -42,7 +42,7 @@ namespace TaskListManager.src
         public void addTask(TaskItem item)
         {
             this.taskList.Add(item);
-
+            this.taskList.Sort(delegate (TaskItem a, TaskItem b) { return a.Deadline.CompareTo(b.Deadline); });
         }
 
         // 指定したIDのタスクを削除
@@ -75,6 +75,19 @@ namespace TaskListManager.src
             }
 
             return item;
+        }
+
+        // IDを指定してタスク内容を変更する
+        public void editTaskItemByID(long id, String task, DateTime deadline)
+        {
+            TaskItem taskItem = getTaskItemByID(id);
+
+            if (null != taskItem)
+            {
+                taskItem.Task = task;
+                taskItem.Deadline = deadline;
+                this.taskList.Sort(delegate (TaskItem a, TaskItem b) { return a.Deadline.CompareTo(b.Deadline); });
+            }
         }
 
         // タスクのリストを取得

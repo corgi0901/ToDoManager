@@ -83,25 +83,27 @@ namespace TaskListManager
             }
             else  // 既存タスク編集
             {
-                TaskItem taskItem = manager.getTaskItemByID(id);
-
-                taskItem.Task = this.taskEditView.Task;
-                taskItem.Deadline = this.taskEditView.Deadline;
-
-                for(int i=0; i<this.taskListPanel.Controls.Count; i++)
-                {
-                    TaskView taskView = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
-
-                    if(id == taskView.getTaskItemID())
-                    {
-                        taskView.setTaskItem(taskItem);
-                    }
-                }
+                manager.editTaskItemByID(id, this.taskEditView.Task, this.taskEditView.Deadline);
             }
-            
+
             manager.saveTaskList();
 
+            // 画面の更新
+            refreshTaskTable();
             hideTaskEditView();
+        }
+
+        // タスクリスト表示の更新
+        private void refreshTaskTable()
+        {
+            TaskManager manager = TaskManager.getInstance();
+            List<TaskItem> taskList = manager.getTaskList();
+
+            for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
+            {
+                TaskView taskView = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
+                taskView.setTaskItem(taskList[i]);
+            }
         }
 
         // タスクの追加画面で「Cancel」ボタンを押したときのイベント

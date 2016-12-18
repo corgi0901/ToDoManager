@@ -31,9 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.taskTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -64,20 +65,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "期限";
             // 
-            // dateTimePicker
+            // datePicker
             // 
-            this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker.Location = new System.Drawing.Point(3, 57);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(286, 19);
-            this.dateTimePicker.TabIndex = 3;
+            this.datePicker.CustomFormat = "yyyy/MM/dd (ddd)";
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(3, 57);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(126, 19);
+            this.datePicker.TabIndex = 3;
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(214, 82);
+            this.cancelButton.Location = new System.Drawing.Point(84, 82);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -87,8 +87,7 @@
             // 
             // okButton
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(133, 82);
+            this.okButton.Location = new System.Drawing.Point(3, 82);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 5;
@@ -96,18 +95,29 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // createTaskView
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "HH:mm";
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timePicker.Location = new System.Drawing.Point(132, 57);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(55, 19);
+            this.timePicker.TabIndex = 6;
+            // 
+            // TaskEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.timePicker);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.datePicker);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.taskTextBox);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "createTaskView";
+            this.Name = "TaskEditView";
             this.Size = new System.Drawing.Size(292, 110);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -119,8 +129,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox taskTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.DateTimePicker timePicker;
     }
 }
