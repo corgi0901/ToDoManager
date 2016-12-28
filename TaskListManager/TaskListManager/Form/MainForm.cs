@@ -20,13 +20,21 @@ namespace TaskListManager
 
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
-            TaskManager manager = TaskManager.getInstance();
-            List<TaskItem> taskList = manager.getTaskList();
+            refreshTaskTable();
+        }
 
-            foreach(TaskItem task in taskList)
-            {
-                addTaskView(task);
-            }
+        // タスクを画面上のリストに追加する
+        private void addDateView(DateTime date)
+        {
+            Label view = new Label();
+            view.Text = date.ToString("yyyy/MM/dd (ddd)");
+            view.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            view.BackColor = System.Drawing.Color.Gray;
+            view.ForeColor = System.Drawing.Color.AntiqueWhite;
+            view.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            view.Margin = new Padding(0, 0, 0, 3);
+            view.Padding = new Padding(5, 0, 0, 0);
+            this.taskListPanel.Controls.Add(view);
         }
 
         // タスクを画面上のリストに追加する
@@ -35,7 +43,6 @@ namespace TaskListManager
             TaskView view = new TaskView(task);
             view.doneButton_Click += done;
             view.editButton_Click += edit;
-
             this.taskListPanel.Controls.Add(view);
         }
 
@@ -79,7 +86,6 @@ namespace TaskListManager
             {
                 TaskItem task = new TaskItem(this.taskEditView.Task, this.taskEditView.Deadline);
                 manager.addTask(task);
-                addTaskView(task);
             }
             else  // 既存タスク編集
             {
@@ -88,9 +94,10 @@ namespace TaskListManager
 
             manager.saveTaskList();
 
+            hideTaskEditView();
+
             // 画面の更新
             refreshTaskTable();
-            hideTaskEditView();
         }
 
         // タスクリスト表示の更新
@@ -99,10 +106,29 @@ namespace TaskListManager
             TaskManager manager = TaskManager.getInstance();
             List<TaskItem> taskList = manager.getTaskList();
 
-            for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
+            // コントロールの削除
+            for (int i = this.taskListPanel.Controls.Count - 1; i >= 0; i--)
             {
-                TaskView taskView = (TaskView)this.taskListPanel.GetControlFromPosition(0, i);
-                taskView.setTaskItem(taskList[i]);
+                Control control = this.taskListPanel.GetControlFromPosition(0, i);
+
+                if (control is TaskView || control is Label)
+                {
+                    this.taskListPanel.Controls.Remove(control);
+                    control.Dispose();
+                }
+            }
+
+            DateTime date = DateTime.Parse("1/1/1");
+
+            for(int i = 0; i < taskList.Count; i++)
+            {
+                TaskItem task = taskList[i];
+                if(task.Deadline.Date != date)
+                {
+                    addDateView(task.Deadline.Date);
+                    date = task.Deadline.Date;
+                }
+                addTaskView(task);
             }
         }
 
@@ -118,13 +144,10 @@ namespace TaskListManager
             TaskView taskView = (TaskView)sender;
             TaskManager manager = TaskManager.getInstance();
 
-            this.taskListPanel.Controls.Remove(taskView);
-
             manager.deleteTaskById(taskView.getTaskItemID());
             manager.saveTaskList();
 
-            // 後片付け
-            taskView = null;
+            refreshTaskTable();
         }
 
         // タスクの編集イベント

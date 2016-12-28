@@ -8,6 +8,7 @@ namespace TaskListManager
     public partial class TaskView : UserControl
     {
         private Boolean isShowButton;
+        private Label dealineLabel;
         private Label taskLabel;
         private TaskOptionPanel optButton;
         private long ID;
@@ -25,7 +26,15 @@ namespace TaskListManager
 
             // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            this.Margin = new Padding(0, 0, 0, 5);
+            this.Margin = new Padding(0, 0, 0, 3);
+
+            // 時刻表示部の初期化
+            this.dealineLabel = new Label();
+            this.dealineLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.dealineLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            this.dealineLabel.Margin = new Padding(0);
+            this.dealineLabel.Padding = new Padding(5, 0, 0, 0);
+            this.dealineLabel.Click += Task_Click;
 
             // タスク表示部の初期化
             this.taskLabel = new Label();
@@ -43,6 +52,7 @@ namespace TaskListManager
             this.optButton.editEvent += editButtun_ClickEvent;
 
             // テーブルレイアウトに追加
+            this.tableLayoutPanel1.Controls.Add(this.dealineLabel);
             this.tableLayoutPanel1.Controls.Add(this.taskLabel);
             this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
 
@@ -60,6 +70,7 @@ namespace TaskListManager
         public void setTaskItem(TaskItem taskItem)
         {
             this.ID = taskItem.ID;
+            this.dealineLabel.Text = taskItem.Deadline.TimeOfDay.ToString(@"hh\:mm");
             this.taskLabel.Text = taskItem.Task;
         }
 
