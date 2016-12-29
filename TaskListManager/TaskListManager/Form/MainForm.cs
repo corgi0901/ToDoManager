@@ -23,17 +23,10 @@ namespace TaskListManager
             refreshTaskTable();
         }
 
-        // タスクを画面上のリストに追加する
+        // タスクの締め切り日時を画面上のリストに追加する
         private void addDateView(DateTime date)
         {
-            Label view = new Label();
-            view.Text = date.ToString("yyyy/MM/dd (ddd)");
-            view.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            view.BackColor = System.Drawing.Color.Gray;
-            view.ForeColor = System.Drawing.Color.AntiqueWhite;
-            view.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            view.Margin = new Padding(0, 0, 0, 3);
-            view.Padding = new Padding(5, 0, 0, 0);
+            DeadlineLabel view = new DeadlineLabel(date);
             this.taskListPanel.Controls.Add(view);
         }
 
@@ -109,9 +102,9 @@ namespace TaskListManager
             // コントロールの削除
             for (int i = this.taskListPanel.Controls.Count - 1; i >= 0; i--)
             {
-                Control control = this.taskListPanel.GetControlFromPosition(0, i);
+                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, i);
 
-                if (control is TaskView || control is Label)
+                if (control is TaskView || control is DeadlineLabel)
                 {
                     this.taskListPanel.Controls.Remove(control);
                     control.Dispose();

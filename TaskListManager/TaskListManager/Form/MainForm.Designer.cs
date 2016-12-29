@@ -49,7 +49,7 @@
             this.taskListPanel.RowCount = 2;
             this.taskListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.taskListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.taskListPanel.Size = new System.Drawing.Size(330, 120);
+            this.taskListPanel.Size = new System.Drawing.Size(278, 120);
             this.taskListPanel.TabIndex = 1;
             // 
             // mainPanel
@@ -61,11 +61,12 @@
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.mainPanel.Controls.Add(this.taskListPanel, 0, 0);
             this.mainPanel.Location = new System.Drawing.Point(3, 34);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.RowCount = 2;
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainPanel.Size = new System.Drawing.Size(330, 617);
+            this.mainPanel.Size = new System.Drawing.Size(278, 526);
             this.mainPanel.TabIndex = 2;
             // 
             // addButton
@@ -86,10 +87,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 655);
+            this.ClientSize = new System.Drawing.Size(284, 561);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.addButton);
-            this.DoubleBuffered = true;
             this.Name = "MainForm";
             this.Text = "ToDo List";
             this.mainPanel.ResumeLayout(false);

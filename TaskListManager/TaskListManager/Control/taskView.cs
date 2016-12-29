@@ -80,7 +80,9 @@ namespace TaskListManager
             if ( false == this.isShowButton )
             {
                 this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 1);
-                this.tableLayoutPanel1.Controls.Add(this.optButton);
+                this.tableLayoutPanel1.SetColumn(this.taskLabel, 2);
+                this.tableLayoutPanel1.SetColumn(this.timeLabel, 1);
+                this.tableLayoutPanel1.Controls.Add(this.optButton, 0, 0);
 
                 this.isShowButton = true;
             }

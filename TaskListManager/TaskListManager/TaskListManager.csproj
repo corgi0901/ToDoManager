@@ -52,6 +52,12 @@
     <Compile Include="Control\TaskEditView.Designer.cs">
       <DependentUpon>TaskEditView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\DeadlineLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DeadlineLabel.Designer.cs">
+      <DependentUpon>DeadlineLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="src\TaskItem.cs" />
     <Compile Include="src\TaskManager.cs" />
+    <EmbeddedResource Include="Control\DeadlineLabel.resx">
+      <DependentUpon>DeadlineLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\TaskEditView.resx">
       <DependentUpon>TaskEditView.cs</DependentUpon>
     </EmbeddedResource>
