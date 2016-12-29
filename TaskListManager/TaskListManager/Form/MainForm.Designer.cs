@@ -90,6 +90,7 @@
             this.ClientSize = new System.Drawing.Size(284, 561);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.addButton);
+            this.MinimumSize = new System.Drawing.Size(300, 600);
             this.Name = "MainForm";
             this.Text = "ToDo List";
             this.mainPanel.ResumeLayout(false);
