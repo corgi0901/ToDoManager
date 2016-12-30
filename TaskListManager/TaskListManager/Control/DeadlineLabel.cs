@@ -38,21 +38,21 @@ namespace TaskListManager
                 this.remainDayLabel.Text = "期限切れ";
                 this.dateLabel.ForeColor = Color.AntiqueWhite;
                 this.remainDayLabel.ForeColor = Color.AntiqueWhite;
-                this.BackColor = Color.Red;
+                this.BackColor = Color.Gray;
             }
             else if (remain.Days == 0)
             {
                 this.remainDayLabel.Text = "今日まで";
-                this.dateLabel.ForeColor = Color.Black;
-                this.remainDayLabel.ForeColor = Color.Black;
-                this.BackColor = Color.Orange;
+                this.dateLabel.ForeColor = Color.AntiqueWhite;
+                this.remainDayLabel.ForeColor = Color.AntiqueWhite;
+                this.BackColor = Color.Red;
             }
             else if (remain.Days == 1)
             {
                 this.remainDayLabel.Text = "明日まで";
                 this.dateLabel.ForeColor = Color.Black;
                 this.remainDayLabel.ForeColor = Color.Black;
-                this.BackColor = Color.GreenYellow;
+                this.BackColor = Color.Orange;
             }
             else
             {
