@@ -35,12 +35,14 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
+            this.repeatComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Location = new System.Drawing.Point(3, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 12);
             this.label1.TabIndex = 0;
@@ -53,7 +55,7 @@
             this.taskTextBox.Location = new System.Drawing.Point(3, 20);
             this.taskTextBox.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(194, 19);
+            this.taskTextBox.Size = new System.Drawing.Size(274, 19);
             this.taskTextBox.TabIndex = 1;
             // 
             // label2
@@ -105,10 +107,34 @@
             this.timePicker.Size = new System.Drawing.Size(55, 19);
             this.timePicker.TabIndex = 6;
             // 
+            // repeatComboBox
+            // 
+            this.repeatComboBox.FormattingEnabled = true;
+            this.repeatComboBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.repeatComboBox.Items.AddRange(new object[] {
+            "なし",
+            "毎日",
+            "毎週"});
+            this.repeatComboBox.Location = new System.Drawing.Point(193, 57);
+            this.repeatComboBox.Name = "repeatComboBox";
+            this.repeatComboBox.Size = new System.Drawing.Size(84, 20);
+            this.repeatComboBox.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(191, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "繰り返し";
+            // 
             // TaskEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.repeatComboBox);
             this.Controls.Add(this.timePicker);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
@@ -118,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TaskEditView";
-            this.Size = new System.Drawing.Size(200, 110);
+            this.Size = new System.Drawing.Size(280, 110);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +159,7 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.DateTimePicker timePicker;
+        private System.Windows.Forms.ComboBox repeatComboBox;
+        private System.Windows.Forms.Label label3;
     }
 }

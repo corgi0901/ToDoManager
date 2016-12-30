@@ -59,7 +59,40 @@ namespace TaskListManager.src
                 }
             }
         }
-        
+    
+        // 指定したIDのタスクを完了させる
+        public void completeTaskById(long id)
+        {
+            for (int i = 0; i < this.taskList.Count; i++)
+            {
+                TaskItem task = this.taskList[i];
+
+                if (task.ID == id)
+                {
+                    if (task.RepeatType == REPEAT_TYPE.none)
+                    {
+                        this.taskList.Remove(task);
+                    }
+                    else if(task.RepeatType == REPEAT_TYPE.day)
+                    {
+                        DateTime date = task.Deadline.AddDays(1);
+                        while (DateTime.Now.Date > date.Date) date = date.AddDays(1);
+                        task.Deadline = date;
+                        this.taskList.Sort(delegate (TaskItem a, TaskItem b) { return a.Deadline.CompareTo(b.Deadline); });
+                    }
+                    else if (task.RepeatType == REPEAT_TYPE.week)
+                    {
+                        DateTime date = task.Deadline.AddDays(7);
+                        while (DateTime.Now.Date > date.Date) date = date.AddDays(7);
+                        task.Deadline = date;
+                        this.taskList.Sort(delegate (TaskItem a, TaskItem b) { return a.Deadline.CompareTo(b.Deadline); });
+                    }
+
+                    break;
+                }
+            }
+        }
+
         // 指定したIDのタスクを取得する
         public TaskItem getTaskItemByID(long id)
         {
@@ -78,7 +111,7 @@ namespace TaskListManager.src
         }
 
         // IDを指定してタスク内容を変更する
-        public void editTaskItemByID(long id, String task, DateTime deadline)
+        public void editTaskItemByID(long id, String task, DateTime deadline, REPEAT_TYPE type)
         {
             TaskItem taskItem = getTaskItemByID(id);
 
@@ -86,6 +119,7 @@ namespace TaskListManager.src
             {
                 taskItem.Task = task;
                 taskItem.Deadline = deadline;
+                taskItem.RepeatType = type;
                 this.taskList.Sort(delegate (TaskItem a, TaskItem b) { return a.Deadline.CompareTo(b.Deadline); });
             }
         }

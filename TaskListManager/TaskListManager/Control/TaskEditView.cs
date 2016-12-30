@@ -20,6 +20,12 @@ namespace TaskListManager
             set { setDeadLine(value); }
         }
 
+        public REPEAT_TYPE RepeatType
+        {
+            get { return (REPEAT_TYPE)this.repeatComboBox.SelectedIndex; }
+            set { this.repeatComboBox.SelectedIndex = (int)value; }
+        }
+
         public long ID
         {
             get { return this.id; }
@@ -38,6 +44,7 @@ namespace TaskListManager
         {
             this.Task = task.Task;
             this.Deadline = task.Deadline;
+            this.RepeatType = task.RepeatType;
             this.ID = task.ID;
         }
 
@@ -61,6 +68,7 @@ namespace TaskListManager
             this.taskTextBox.Text = "";
             this.datePicker.Value = DateTime.Now;
             this.timePicker.Value = DateTime.Parse("12:00");
+            this.repeatComboBox.SelectedIndex = 0;
             this.id = -1;
         }
 

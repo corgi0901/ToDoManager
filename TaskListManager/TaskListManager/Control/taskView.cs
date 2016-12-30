@@ -72,6 +72,20 @@ namespace TaskListManager
             this.ID = taskItem.ID;
             this.timeLabel.Text = taskItem.Deadline.TimeOfDay.ToString(@"hh\:mm");
             this.taskLabel.Text = taskItem.Task;
+
+            switch (taskItem.RepeatType)
+            {
+                case REPEAT_TYPE.none:
+                    break;
+                case REPEAT_TYPE.day:
+                    this.timeLabel.Text += "\n(毎日)";
+                    break;
+                case REPEAT_TYPE.week:
+                    this.timeLabel.Text += "\n(毎週)";
+                    break;
+                default:
+                    break;
+            }
         }
 
         // タスクの内容がクリックされたときの処理

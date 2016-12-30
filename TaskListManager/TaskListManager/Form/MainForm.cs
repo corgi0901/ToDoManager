@@ -77,12 +77,12 @@ namespace TaskListManager
 
             if(id < 0) // 新規タスク追加
             {
-                TaskItem task = new TaskItem(this.taskEditView.Task, this.taskEditView.Deadline);
+                TaskItem task = new TaskItem(this.taskEditView.Task, this.taskEditView.Deadline, this.taskEditView.RepeatType);
                 manager.addTask(task);
             }
             else  // 既存タスク編集
             {
-                manager.editTaskItemByID(id, this.taskEditView.Task, this.taskEditView.Deadline);
+                manager.editTaskItemByID(id, this.taskEditView.Task, this.taskEditView.Deadline, this.taskEditView.RepeatType);
             }
 
             manager.saveTaskList();
@@ -134,7 +134,8 @@ namespace TaskListManager
             TaskView taskView = (TaskView)sender;
             TaskManager manager = TaskManager.getInstance();
 
-            manager.deleteTaskById(taskView.getTaskItemID());
+            manager.completeTaskById(taskView.getTaskItemID());
+            
             manager.saveTaskList();
 
             refreshTaskTable();
