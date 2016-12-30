@@ -99,16 +99,16 @@ namespace TaskListManager
             TaskManager manager = TaskManager.getInstance();
             List<TaskItem> taskList = manager.getTaskList();
 
-            // コントロールの削除
-            for (int i = this.taskListPanel.Controls.Count - 1; i >= 0; i--)
+            // タスクリストの全コントロールを削除
+            while (this.taskListPanel.Controls.Count > 0)
             {
-                Control control = this.taskListPanel.GetControlFromPosition(0, i);
+                Control control = this.taskListPanel.GetControlFromPosition(0, 0);
 
                 this.taskListPanel.Controls.Remove(control);
                 control.Dispose();
             }
 
-            DateTime date = DateTime.Parse("1/1/1");
+            DateTime date = new DateTime();
 
             for(int i = 0; i < taskList.Count; i++)
             {
