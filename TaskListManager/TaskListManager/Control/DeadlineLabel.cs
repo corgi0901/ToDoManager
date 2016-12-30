@@ -36,18 +36,30 @@ namespace TaskListManager
             if (remain.Days < 0)
             {
                 this.remainDayLabel.Text = "期限切れ";
+                this.dateLabel.ForeColor = Color.AntiqueWhite;
+                this.remainDayLabel.ForeColor = Color.AntiqueWhite;
+                this.BackColor = Color.Red;
             }
             else if (remain.Days == 0)
             {
                 this.remainDayLabel.Text = "今日まで";
+                this.dateLabel.ForeColor = Color.Black;
+                this.remainDayLabel.ForeColor = Color.Black;
+                this.BackColor = Color.Orange;
             }
             else if (remain.Days == 1)
             {
                 this.remainDayLabel.Text = "明日まで";
+                this.dateLabel.ForeColor = Color.Black;
+                this.remainDayLabel.ForeColor = Color.Black;
+                this.BackColor = Color.GreenYellow;
             }
             else
             {
                 this.remainDayLabel.Text = "あと" + remain.Days + "日";
+                this.dateLabel.ForeColor = Color.Black;
+                this.remainDayLabel.ForeColor = Color.Black;
+                this.BackColor = Color.Aquamarine;
             }
         }
     }

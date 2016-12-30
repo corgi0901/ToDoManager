@@ -102,13 +102,10 @@ namespace TaskListManager
             // コントロールの削除
             for (int i = this.taskListPanel.Controls.Count - 1; i >= 0; i--)
             {
-                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, i);
+                Control control = this.taskListPanel.GetControlFromPosition(0, i);
 
-                if (control is TaskView || control is DeadlineLabel)
-                {
-                    this.taskListPanel.Controls.Remove(control);
-                    control.Dispose();
-                }
+                this.taskListPanel.Controls.Remove(control);
+                control.Dispose();
             }
 
             DateTime date = DateTime.Parse("1/1/1");
@@ -153,6 +150,21 @@ namespace TaskListManager
                 this.taskEditView.reflectTaskItem(taskItem);
             }
             showTaskEditView();
+        }
+
+        // タスク期限表示の更新のタイマーイベント
+        private void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            
+            for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
+            {
+                Control control = this.taskListPanel.GetControlFromPosition(0, i);
+
+                if(control is DeadlineLabel)
+                {
+                    ((DeadlineLabel)control).refreshRemainDays();
+                }
+            }
         }
     }
 }

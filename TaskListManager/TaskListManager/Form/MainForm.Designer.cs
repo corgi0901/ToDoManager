@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.addButton = new System.Windows.Forms.Button();
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +85,12 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Enabled = true;
+            this.refreshTimer.Interval = 60000;
+            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -103,6 +111,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TableLayoutPanel taskListPanel;
         private System.Windows.Forms.TableLayoutPanel mainPanel;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }
 

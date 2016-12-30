@@ -42,9 +42,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 12);
+            this.label1.Size = new System.Drawing.Size(30, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "やること";
+            this.label1.Text = "タスク";
             // 
             // taskTextBox
             // 
@@ -53,7 +53,7 @@
             this.taskTextBox.Location = new System.Drawing.Point(3, 20);
             this.taskTextBox.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(286, 19);
+            this.taskTextBox.Size = new System.Drawing.Size(194, 19);
             this.taskTextBox.TabIndex = 1;
             // 
             // label2
@@ -81,7 +81,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
@@ -118,7 +118,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TaskEditView";
-            this.Size = new System.Drawing.Size(292, 110);
+            this.Size = new System.Drawing.Size(200, 110);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -41,7 +41,7 @@ namespace TaskListManager
             this.taskLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.taskLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             this.taskLabel.Margin = new Padding(0);
-            this.taskLabel.Padding = new Padding(5, 0, 0, 0);
+            this.taskLabel.Padding = new Padding(0, 0, 0, 0);
             this.taskLabel.Click += Task_Click;
 
             // オプションボタンの初期化
@@ -52,9 +52,9 @@ namespace TaskListManager
             this.optButton.editEvent += editButtun_ClickEvent;
 
             // テーブルレイアウトに追加
-            this.tableLayoutPanel1.Controls.Add(this.timeLabel);
-            this.tableLayoutPanel1.Controls.Add(this.taskLabel);
-            this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+            this.mainPanel.Controls.Add(this.timeLabel);
+            this.mainPanel.Controls.Add(this.taskLabel);
+            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
             // タスクの内容を反映
             setTaskItem(taskItem);
@@ -79,17 +79,17 @@ namespace TaskListManager
         {
             if ( false == this.isShowButton )
             {
-                this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 1);
-                this.tableLayoutPanel1.SetColumn(this.taskLabel, 2);
-                this.tableLayoutPanel1.SetColumn(this.timeLabel, 1);
-                this.tableLayoutPanel1.Controls.Add(this.optButton, 0, 0);
+                this.mainPanel.SetColumnSpan(this.taskLabel, 1);
+                this.mainPanel.SetColumn(this.taskLabel, 2);
+                this.mainPanel.SetColumn(this.timeLabel, 1);
+                this.mainPanel.Controls.Add(this.optButton, 0, 0);
 
                 this.isShowButton = true;
             }
             else
             {
-                this.tableLayoutPanel1.Controls.Remove(this.optButton);
-                this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+                this.mainPanel.Controls.Remove(this.optButton);
+                this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
                 this.isShowButton = false;
             }   
@@ -98,8 +98,8 @@ namespace TaskListManager
         // 「完了」ボタンをクリックしたときの処理
         private void doneButtun_ClickEvent()
         {
-            this.tableLayoutPanel1.Controls.Remove(this.optButton);
-            this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+            this.mainPanel.Controls.Remove(this.optButton);
+            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
             this.isShowButton = false;
 
             doneButton_Click(this);
@@ -108,8 +108,8 @@ namespace TaskListManager
         // 「編集」ボタンをクリックしたときの処理
         private void editButtun_ClickEvent()
         {
-            this.tableLayoutPanel1.Controls.Remove(this.optButton);
-            this.tableLayoutPanel1.SetColumnSpan(this.taskLabel, 2);
+            this.mainPanel.Controls.Remove(this.optButton);
+            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
             this.isShowButton = false;
 
             editButton_Click(this);
