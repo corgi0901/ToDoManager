@@ -40,7 +40,7 @@ namespace TaskListManager
         }
 
         // タスクの編集画面を表示する
-        private void showTaskEditView()
+        private void showTaskEditView(EDIT_MODE mode)
         {
             this.mainPanel.SetRowSpan(this.taskListPanel, 1);
             this.mainPanel.SetRow(this.taskListPanel, 1);
@@ -50,6 +50,8 @@ namespace TaskListManager
 
             this.addButton.Enabled = false;
             this.addButton.BackgroundImage = Properties.Resources.plus_disable;
+
+            this.taskEditView.setEditMode(mode);
         }
 
         // タスクの編集画面を非表示にする
@@ -66,7 +68,7 @@ namespace TaskListManager
         // 「タスクの追加」ボタンを押したときのイベント
         private void addButton_Click(object sender, EventArgs e)
         {
-            showTaskEditView();
+            showTaskEditView(EDIT_MODE.New);
         }
 
         // タスク追加画面で「OK」ボタンを押したときのイベント
@@ -150,7 +152,7 @@ namespace TaskListManager
             {
                 this.taskEditView.reflectTaskItem(taskItem);
             }
-            showTaskEditView();
+            showTaskEditView(EDIT_MODE.Edit);
         }
 
         // タスク期限表示の更新のタイマーイベント

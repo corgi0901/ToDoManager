@@ -5,6 +5,12 @@ using TaskListManager.src;
 
 namespace TaskListManager
 {
+    public enum EDIT_MODE
+    {
+        New = 0,
+        Edit
+    }
+
     public partial class TaskEditView : UserControl
     {
         private long id;
@@ -37,6 +43,7 @@ namespace TaskListManager
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            this.titleLabel.Width = this.Width;
             setFontSize(10);
             reset();
         }
@@ -45,6 +52,10 @@ namespace TaskListManager
         {
             Font font = new Font("Meiryo UI", size);
             Size strSize;
+
+            this.titleLabel.Font = font;
+            strSize = TextRenderer.MeasureText(this.titleLabel.Text, font);
+            this.titleLabel.Height = (int)(strSize.Height * 1.5);
 
             this.label1.Font = font;
             this.label2.Font = font;
@@ -75,8 +86,11 @@ namespace TaskListManager
             this.cancelButton.Height = strSize.Height + 10;
             this.cancelButton.Width = strSize.Width + 20;
 
+            // タイトルラベルの位置
+            this.titleLabel.Location = new Point(0, 0);
+
             // 「タスク」ラベルの位置
-            this.label1.Location = new Point(5, 5);
+            this.label1.Location = new Point(5, this.titleLabel.Location.Y + this.titleLabel.Height + 5);
             
             // テキストボックスの位置
             this.taskTextBox.Location = new Point(5, this.label1.Location.Y + this.label1.Height + 3);
@@ -102,7 +116,19 @@ namespace TaskListManager
             // Cancelボタンの位置
             this.cancelButton.Location = new Point(this.okButton.Location.X + this.okButton.Width + 3, this.okButton.Location.Y);
 
-            this.Size = new Size(this.Size.Width, this.okButton.Location.Y + this.okButton.Height + 10);
+            this.Height = this.okButton.Location.Y + this.okButton.Height + 10;
+        }
+
+        public void setEditMode(EDIT_MODE mode)
+        {
+            if(mode == EDIT_MODE.New)
+            {
+                this.titleLabel.Text = "新規タスクの登録";
+            }
+            else if(mode == EDIT_MODE.Edit)
+            {
+                this.titleLabel.Text = "既存タスクの編集";
+            }
         }
 
         // 指定されたタスクの内容をビューに反映する

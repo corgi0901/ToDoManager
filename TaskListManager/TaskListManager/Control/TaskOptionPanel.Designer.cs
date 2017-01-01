@@ -38,6 +38,7 @@
             this.editButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.editButton.FlatAppearance.BorderSize = 0;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.editButton.Location = new System.Drawing.Point(0, 25);
             this.editButton.Margin = new System.Windows.Forms.Padding(0);
             this.editButton.Name = "editButton";
@@ -53,6 +54,7 @@
             this.doneButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.doneButton.FlatAppearance.BorderSize = 0;
             this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doneButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.doneButton.Location = new System.Drawing.Point(0, 0);
             this.doneButton.Margin = new System.Windows.Forms.Padding(0);
             this.doneButton.Name = "doneButton";
