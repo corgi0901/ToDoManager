@@ -56,6 +56,8 @@ namespace TaskListManager
             this.mainPanel.Controls.Add(this.taskLabel);
             this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
+            setFontSize(10);
+
             // タスクの内容を反映
             setTaskItem(taskItem);
         }
@@ -86,6 +88,17 @@ namespace TaskListManager
                 default:
                     break;
             }
+        }
+
+        public void setFontSize(int size)
+        {
+            Font font = new Font("Meiryo UI", size);
+            this.timeLabel.Font = font;
+            this.taskLabel.Font = font;
+            this.Height = font.Height * 4;
+            this.mainPanel.ColumnStyles[0] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
+            this.mainPanel.ColumnStyles[1] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
+            this.optButton.setSize(font.Height * 4, font.Height * 4);
         }
 
         // タスクの内容がクリックされたときの処理

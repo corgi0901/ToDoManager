@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TaskListManager.src;
 
@@ -36,7 +37,72 @@ namespace TaskListManager
         {
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            setFontSize(10);
             reset();
+        }
+
+        public void setFontSize(int size)
+        {
+            Font font = new Font("Meiryo UI", size);
+            Size strSize;
+
+            this.label1.Font = font;
+            this.label2.Font = font;
+            this.label3.Font = font;
+
+            this.taskTextBox.Font = font;
+            this.taskTextBox.Width = this.Width - 15;
+
+            this.datePicker.Font = font;
+            strSize = TextRenderer.MeasureText("0000/00/00 (日)", font);
+            this.datePicker.Width = strSize.Width + 30;
+
+            this.timePicker.Font = font;
+            strSize = TextRenderer.MeasureText("00:00", font);
+            this.timePicker.Width = strSize.Width + 30;
+
+            this.repeatComboBox.Font = font;
+            strSize = TextRenderer.MeasureText("なし", font);
+            this.repeatComboBox.Width = strSize.Width + 30;
+
+            strSize = TextRenderer.MeasureText(this.cancelButton.Text, font);
+
+            this.okButton.Font = font;
+            this.okButton.Height = strSize.Height + 10;
+            this.okButton.Width = strSize.Width + 20;
+
+            this.cancelButton.Font = font;
+            this.cancelButton.Height = strSize.Height + 10;
+            this.cancelButton.Width = strSize.Width + 20;
+
+            // 「タスク」ラベルの位置
+            this.label1.Location = new Point(5, 5);
+            
+            // テキストボックスの位置
+            this.taskTextBox.Location = new Point(5, this.label1.Location.Y + this.label1.Height + 3);
+
+            //「期限」ラベルの位置
+            this.label2.Location = new Point(5, this.taskTextBox.Location.Y + this.taskTextBox.Height + 5);
+
+            // DatePickerの位置
+            this.datePicker.Location = new Point(5, this.label2.Location.Y + this.label2.Height + 3);
+
+            // timepickerの位置
+            this.timePicker.Location = new Point(this.datePicker.Location.X + this.datePicker.Width + 3, this.datePicker.Location.Y);
+
+            // 「繰り返し」ラベルの位置
+            this.label3.Location = new Point(5, this.datePicker.Location.Y + this.datePicker.Height + 5);
+
+            // comboboxの位置
+            this.repeatComboBox.Location = new Point(this.label3.Location.X, this.label3.Location.Y + this.label3.Height + 3);
+
+            // OKボタンの位置
+            this.okButton.Location = new Point(5, this.repeatComboBox.Location.Y + this.repeatComboBox.Height + 5);
+
+            // Cancelボタンの位置
+            this.cancelButton.Location = new Point(this.okButton.Location.X + this.okButton.Width + 3, this.okButton.Location.Y);
+
+            this.Size = new Size(this.Size.Width, this.okButton.Location.Y + this.okButton.Height + 10);
         }
 
         // 指定されたタスクの内容をビューに反映する

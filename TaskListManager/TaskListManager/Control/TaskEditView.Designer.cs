@@ -55,7 +55,7 @@
             this.taskTextBox.Location = new System.Drawing.Point(3, 20);
             this.taskTextBox.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(274, 19);
+            this.taskTextBox.Size = new System.Drawing.Size(272, 19);
             this.taskTextBox.TabIndex = 1;
             // 
             // label2
@@ -79,7 +79,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(84, 82);
+            this.cancelButton.Location = new System.Drawing.Point(84, 120);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(3, 82);
+            this.okButton.Location = new System.Drawing.Point(3, 120);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 5;
@@ -115,7 +115,7 @@
             "なし",
             "毎日",
             "毎週"});
-            this.repeatComboBox.Location = new System.Drawing.Point(193, 57);
+            this.repeatComboBox.Location = new System.Drawing.Point(3, 94);
             this.repeatComboBox.Name = "repeatComboBox";
             this.repeatComboBox.Size = new System.Drawing.Size(84, 20);
             this.repeatComboBox.TabIndex = 7;
@@ -123,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(191, 42);
+            this.label3.Location = new System.Drawing.Point(4, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 12);
             this.label3.TabIndex = 8;
@@ -133,6 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.repeatComboBox);
             this.Controls.Add(this.timePicker);
@@ -142,9 +143,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.taskTextBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.Name = "TaskEditView";
-            this.Size = new System.Drawing.Size(280, 110);
+            this.Size = new System.Drawing.Size(278, 152);
             this.ResumeLayout(false);
             this.PerformLayout();
 

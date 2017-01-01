@@ -25,6 +25,9 @@ namespace TaskListManager
             this.deadline = date;
             this.dateLabel.Text = this.deadline.ToString("yyyy/MM/dd (ddd)");
 
+            // フォント設定
+            setFontSize(10);
+
             refreshRemainDays();
         }
 
@@ -61,6 +64,16 @@ namespace TaskListManager
                 this.remainDayLabel.ForeColor = Color.Black;
                 this.BackColor = Color.Aquamarine;
             }
+        }
+
+        public void setFontSize(int size)
+        {
+            Font font = new Font("Meiryo UI", size);
+
+            this.dateLabel.Font = font;
+            this.remainDayLabel.Font = font;
+
+            this.Height = (int)(font.Height * 2.0);
         }
     }
 }

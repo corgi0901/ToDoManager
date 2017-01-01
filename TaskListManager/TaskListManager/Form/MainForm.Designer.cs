@@ -62,13 +62,13 @@
             this.mainPanel.ColumnCount = 1;
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.mainPanel.Controls.Add(this.taskListPanel, 0, 0);
-            this.mainPanel.Location = new System.Drawing.Point(3, 34);
+            this.mainPanel.Location = new System.Drawing.Point(3, 41);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.RowCount = 2;
-            this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainPanel.Size = new System.Drawing.Size(278, 526);
+            this.mainPanel.Size = new System.Drawing.Size(278, 519);
             this.mainPanel.TabIndex = 2;
             // 
             // addButton
@@ -80,7 +80,7 @@
             this.addButton.ForeColor = System.Drawing.SystemColors.Control;
             this.addButton.Location = new System.Drawing.Point(9, 9);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(15, 15);
+            this.addButton.Size = new System.Drawing.Size(20, 20);
             this.addButton.TabIndex = 0;
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
