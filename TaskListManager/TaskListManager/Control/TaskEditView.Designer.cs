@@ -55,14 +55,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.taskTextBox.Location = new System.Drawing.Point(3, 38);
             this.taskTextBox.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.taskTextBox.Multiline = true;
             this.taskTextBox.Name = "taskTextBox";
-            this.taskTextBox.Size = new System.Drawing.Size(272, 19);
+            this.taskTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.taskTextBox.Size = new System.Drawing.Size(272, 100);
             this.taskTextBox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 60);
+            this.label2.Location = new System.Drawing.Point(4, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
@@ -72,7 +74,7 @@
             // 
             this.datePicker.CustomFormat = "yyyy/MM/dd (ddd)";
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(3, 75);
+            this.datePicker.Location = new System.Drawing.Point(3, 160);
             this.datePicker.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(126, 19);
@@ -80,7 +82,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(84, 138);
+            this.cancelButton.Location = new System.Drawing.Point(84, 223);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -90,7 +92,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(3, 138);
+            this.okButton.Location = new System.Drawing.Point(3, 223);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 5;
@@ -102,7 +104,7 @@
             // 
             this.timePicker.CustomFormat = "HH:mm";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.timePicker.Location = new System.Drawing.Point(132, 75);
+            this.timePicker.Location = new System.Drawing.Point(132, 160);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
             this.timePicker.Size = new System.Drawing.Size(55, 19);
@@ -116,7 +118,7 @@
             "なし",
             "毎日",
             "毎週"});
-            this.repeatComboBox.Location = new System.Drawing.Point(3, 112);
+            this.repeatComboBox.Location = new System.Drawing.Point(3, 197);
             this.repeatComboBox.Name = "repeatComboBox";
             this.repeatComboBox.Size = new System.Drawing.Size(84, 20);
             this.repeatComboBox.TabIndex = 7;
@@ -124,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 97);
+            this.label3.Location = new System.Drawing.Point(4, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 12);
             this.label3.TabIndex = 8;
@@ -160,7 +162,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.Name = "TaskEditView";
-            this.Size = new System.Drawing.Size(278, 167);
+            this.Size = new System.Drawing.Size(278, 258);
             this.ResumeLayout(false);
             this.PerformLayout();
 

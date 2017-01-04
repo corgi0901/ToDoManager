@@ -62,7 +62,7 @@ namespace TaskListManager
             this.label3.Font = font;
 
             this.taskTextBox.Font = font;
-            this.taskTextBox.Width = this.Width - 15;
+            this.taskTextBox.Width = this.Width - 10;
 
             this.datePicker.Font = font;
             strSize = TextRenderer.MeasureText("0000/00/00 (日)", font);

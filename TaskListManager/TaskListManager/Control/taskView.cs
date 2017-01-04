@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using TaskListManager.src;
 
@@ -56,7 +57,7 @@ namespace TaskListManager
             this.mainPanel.Controls.Add(this.taskLabel);
             this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
-            setFontSize(10);
+            setFontSize(12);
 
             // タスクの内容を反映
             setTaskItem(taskItem);
@@ -73,7 +74,13 @@ namespace TaskListManager
         {
             this.ID = taskItem.ID;
             this.timeLabel.Text = taskItem.Deadline.TimeOfDay.ToString(@"hh\:mm");
+
             this.taskLabel.Text = taskItem.Task;
+
+            int line = taskItem.Task.Count(c => c == '\n') + 1;
+            this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 2));
+
+            this.optButton.setSize(this.taskLabel.Font.Height * 4, this.taskLabel.Height);
 
             switch (taskItem.RepeatType)
             {

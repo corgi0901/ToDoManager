@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace TaskListManager.src
 {
@@ -16,8 +17,13 @@ namespace TaskListManager.src
             {
                 using (System.IO.TextReader reader = new System.IO.StreamReader(confName))
                 {
-                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<TaskItem>));
-                    this.taskList = (List<TaskItem>)serializer.Deserialize(reader);
+                    // 参考URL：http://dobon.net/vb/bbs/log3-35/21530.html
+
+                    XmlDocument xmlData = new XmlDocument();
+                    xmlData.PreserveWhitespace = true;
+                    xmlData.LoadXml(reader.ReadToEnd());
+                    XmlNodeReader xmlReader = new XmlNodeReader(xmlData.DocumentElement);
+                    this.taskList = (List<TaskItem>)new System.Xml.Serialization.XmlSerializer(typeof(List<TaskItem>)).Deserialize(xmlReader);
                 }
             }
             catch (System.IO.FileNotFoundException)
