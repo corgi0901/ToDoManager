@@ -26,7 +26,7 @@ namespace TaskListManager
             this.dateLabel.Text = this.deadline.ToString("yyyy/MM/dd (ddd)");
 
             // フォント設定
-            setFontSize(10);
+            setFontSize(Properties.Settings.Default.fontSize);
 
             refreshRemainDays();
         }

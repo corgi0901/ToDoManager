@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\SettingView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SettingView.Designer.cs">
+      <DependentUpon>SettingView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\TaskEditView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <EmbeddedResource Include="Control\DeadlineLabel.resx">
       <DependentUpon>DeadlineLabel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\SettingView.resx">
+      <DependentUpon>SettingView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\TaskEditView.resx">
       <DependentUpon>TaskEditView.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\plus_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting_enable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting_disable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

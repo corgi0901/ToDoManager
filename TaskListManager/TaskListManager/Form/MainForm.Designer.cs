@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.addButton = new System.Windows.Forms.Button();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.settingButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +72,27 @@
             this.mainPanel.Size = new System.Drawing.Size(278, 519);
             this.mainPanel.TabIndex = 2;
             // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Enabled = true;
+            this.refreshTimer.Interval = 60000;
+            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
+            // 
+            // settingButton
+            // 
+            this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingButton.BackColor = System.Drawing.SystemColors.Control;
+            this.settingButton.BackgroundImage = global::TaskListManager.Properties.Resources.setting_enable;
+            this.settingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.settingButton.Location = new System.Drawing.Point(253, 8);
+            this.settingButton.Name = "settingButton";
+            this.settingButton.Size = new System.Drawing.Size(23, 23);
+            this.settingButton.TabIndex = 3;
+            this.settingButton.UseVisualStyleBackColor = false;
+            this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
+            // 
             // addButton
             // 
             this.addButton.BackgroundImage = global::TaskListManager.Properties.Resources.plus_enable;
@@ -85,17 +107,12 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // refreshTimer
-            // 
-            this.refreshTimer.Enabled = true;
-            this.refreshTimer.Interval = 60000;
-            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 561);
+            this.Controls.Add(this.settingButton);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.addButton);
             this.MinimumSize = new System.Drawing.Size(300, 600);
@@ -112,6 +129,7 @@
         private System.Windows.Forms.TableLayoutPanel taskListPanel;
         private System.Windows.Forms.TableLayoutPanel mainPanel;
         private System.Windows.Forms.Timer refreshTimer;
+        private System.Windows.Forms.Button settingButton;
     }
 }
 

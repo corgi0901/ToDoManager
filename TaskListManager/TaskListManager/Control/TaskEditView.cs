@@ -44,7 +44,7 @@ namespace TaskListManager
             InitializeComponent();
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             this.titleLabel.Width = this.Width;
-            setFontSize(10);
+            setFontSize(Properties.Settings.Default.fontSize);
             reset();
         }
 

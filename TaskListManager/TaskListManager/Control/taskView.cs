@@ -57,7 +57,7 @@ namespace TaskListManager
             this.mainPanel.Controls.Add(this.taskLabel);
             this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
-            setFontSize(12);
+            setFontSize(Properties.Settings.Default.fontSize);
 
             // タスクの内容を反映
             setTaskItem(taskItem);
@@ -105,7 +105,11 @@ namespace TaskListManager
             this.Height = font.Height * 4;
             this.mainPanel.ColumnStyles[0] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
             this.mainPanel.ColumnStyles[1] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
-            this.optButton.setSize(font.Height * 4, font.Height * 4);
+
+            int line = this.taskLabel.Text.Count(c => c == '\n') + 1;
+            this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 2));
+
+            this.optButton.setSize(this.taskLabel.Font.Height * 4, this.taskLabel.Height);
         }
 
         // タスクの内容がクリックされたときの処理

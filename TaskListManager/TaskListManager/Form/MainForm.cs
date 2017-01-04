@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using TaskListManager.src;
+using TaskListManager.Control;
 
 namespace TaskListManager
 {
     public partial class MainForm : Form
     {
         TaskEditView taskEditView;
+        SettingView settingView;
 
         public MainForm()
         {
@@ -17,6 +19,12 @@ namespace TaskListManager
             this.taskEditView = new TaskEditView();
             this.taskEditView.okEvent += okButton_Click;
             this.taskEditView.cancelEvent += cancelButton_Click;
+
+            // 設定画面の初期化
+            this.settingView = new SettingView();
+            this.settingView.okEvent += setting_okButton_Click;
+            this.settingView.cancelEvent += setting_cancelButton_Click;
+
 
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
@@ -48,6 +56,9 @@ namespace TaskListManager
             this.mainPanel.Controls.Add(this.taskEditView);
             this.mainPanel.SetRow(this.taskEditView, 0);
 
+            this.settingButton.Enabled = false;
+            this.settingButton.BackgroundImage = Properties.Resources.setting_disable;
+
             this.addButton.Enabled = false;
             this.addButton.BackgroundImage = Properties.Resources.plus_disable;
 
@@ -60,6 +71,9 @@ namespace TaskListManager
             this.mainPanel.Controls.Remove(this.taskEditView);
             this.mainPanel.SetRow(this.taskListPanel, 0);
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
+
+            this.settingButton.Enabled = true;
+            this.settingButton.BackgroundImage = Properties.Resources.setting_enable;
 
             this.addButton.Enabled = true;
             this.addButton.BackgroundImage = Properties.Resources.plus_enable;
@@ -104,7 +118,7 @@ namespace TaskListManager
             // タスクリストの全コントロールを削除
             while (this.taskListPanel.Controls.Count > 0)
             {
-                Control control = this.taskListPanel.GetControlFromPosition(0, 0);
+                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, 0);
 
                 this.taskListPanel.Controls.Remove(control);
                 control.Dispose();
@@ -161,13 +175,77 @@ namespace TaskListManager
             
             for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
             {
-                Control control = this.taskListPanel.GetControlFromPosition(0, i);
+                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, i);
 
                 if(control is DeadlineLabel)
                 {
                     ((DeadlineLabel)control).refreshRemainDays();
                 }
             }
+        }
+
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            showSettingView();
+        }
+
+        // 設定画面を表示する
+        private void showSettingView()
+        {
+            this.mainPanel.SetRowSpan(this.taskListPanel, 1);
+            this.mainPanel.SetRow(this.taskListPanel, 1);
+
+            this.mainPanel.Controls.Add(this.settingView);
+            this.mainPanel.SetRow(this.settingView, 0);
+
+            this.settingButton.Enabled = false;
+            this.settingButton.BackgroundImage = Properties.Resources.setting_disable;
+
+            this.addButton.Enabled = false;
+            this.addButton.BackgroundImage = Properties.Resources.plus_disable;
+        }
+
+        // タスクの編集画面を非表示にする
+        private void hideSettingView()
+        {
+            this.mainPanel.Controls.Remove(this.settingView);
+            this.mainPanel.SetRow(this.taskListPanel, 0);
+            this.mainPanel.SetRowSpan(this.taskListPanel, 2);
+
+            this.settingButton.Enabled = true;
+            this.settingButton.BackgroundImage = Properties.Resources.setting_enable;
+
+            this.addButton.Enabled = true;
+            this.addButton.BackgroundImage = Properties.Resources.plus_enable;
+        }
+
+        private void setting_okButton_Click(object sender, EventArgs e)
+        {
+            // フォントサイズを反映する
+            this.settingView.setFontSize(Properties.Settings.Default.fontSize);
+            this.taskEditView.setFontSize(Properties.Settings.Default.fontSize);
+
+            for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
+            {
+                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, i);
+
+                if (control is DeadlineLabel)
+                {
+                    ((DeadlineLabel)control).setFontSize(Properties.Settings.Default.fontSize);
+                }
+                else if(control is TaskView)
+                {
+                    ((TaskView)control).setFontSize(Properties.Settings.Default.fontSize);
+                }
+            }
+
+            hideSettingView();
+        }
+
+        private void setting_cancelButton_Click(object sender, EventArgs e)
+        {
+            // フォントサイズを反映する
+            hideSettingView();
         }
     }
 }
