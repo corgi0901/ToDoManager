@@ -34,6 +34,8 @@
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.settingButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.addButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.settingButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +109,14 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // addButtonToolTip
+            // 
+            this.addButtonToolTip.IsBalloon = true;
+            // 
+            // settingButtonToolTip
+            // 
+            this.settingButtonToolTip.IsBalloon = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -130,6 +140,8 @@
         private System.Windows.Forms.TableLayoutPanel mainPanel;
         private System.Windows.Forms.Timer refreshTimer;
         private System.Windows.Forms.Button settingButton;
+        private System.Windows.Forms.ToolTip addButtonToolTip;
+        private System.Windows.Forms.ToolTip settingButtonToolTip;
     }
 }
 

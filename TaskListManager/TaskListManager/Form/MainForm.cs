@@ -25,6 +25,10 @@ namespace TaskListManager
             this.settingView.okEvent += setting_okButton_Click;
             this.settingView.cancelEvent += setting_cancelButton_Click;
 
+            // ツールチップの設定
+            this.addButtonToolTip.SetToolTip(this.addButton, "新規タスクの登録");
+            this.settingButtonToolTip.SetToolTip(this.settingButton, "アプリケーション設定");
+
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             refreshTaskTable();
