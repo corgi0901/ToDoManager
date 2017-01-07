@@ -132,6 +132,10 @@ namespace TaskListManager
                 }
                 addTaskView(task);
             }
+
+            // スクロール領域の再設定
+            this.taskListPanel.AutoScroll = false;
+            this.taskListPanel.AutoScroll = true;
         }
 
         // タスクの追加画面で「Cancel」ボタンを押したときのイベント
