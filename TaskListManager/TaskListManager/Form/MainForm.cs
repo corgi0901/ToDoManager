@@ -25,7 +25,6 @@ namespace TaskListManager
             this.settingView.okEvent += setting_okButton_Click;
             this.settingView.cancelEvent += setting_cancelButton_Click;
 
-
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
 
             refreshTaskTable();
@@ -116,19 +115,12 @@ namespace TaskListManager
             List<TaskItem> taskList = manager.getTaskList();
 
             // タスクリストの全コントロールを削除
-            while (this.taskListPanel.Controls.Count > 0)
-            {
-                System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, 0);
-
-                this.taskListPanel.Controls.Remove(control);
-                control.Dispose();
-            }
-
+            this.taskListPanel.Controls.Clear();
+            
             DateTime date = new DateTime();
 
-            for(int i = 0; i < taskList.Count; i++)
+            foreach(TaskItem task in taskList)
             {
-                TaskItem task = taskList[i];
                 if(task.Deadline.Date != date)
                 {
                     addDateView(task.Deadline.Date);
@@ -172,7 +164,6 @@ namespace TaskListManager
         // タスク期限表示の更新のタイマーイベント
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            
             for (int i = 0; i < this.taskListPanel.Controls.Count; i++)
             {
                 System.Windows.Forms.Control control = this.taskListPanel.GetControlFromPosition(0, i);
@@ -244,7 +235,6 @@ namespace TaskListManager
 
         private void setting_cancelButton_Click(object sender, EventArgs e)
         {
-            // フォントサイズを反映する
             hideSettingView();
         }
     }
