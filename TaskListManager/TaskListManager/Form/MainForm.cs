@@ -235,6 +235,10 @@ namespace TaskListManager
             }
 
             hideSettingView();
+
+            // スクロール領域の再設定
+            this.taskListPanel.AutoScroll = false;
+            this.taskListPanel.AutoScroll = true;
         }
 
         private void setting_cancelButton_Click(object sender, EventArgs e)

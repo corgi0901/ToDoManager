@@ -25,10 +25,10 @@ namespace TaskListManager
             this.deadline = date;
             this.dateLabel.Text = this.deadline.ToString("yyyy/MM/dd (ddd)");
 
-            // フォント設定
-            setFontSize(Properties.Settings.Default.fontSize);
-
             refreshRemainDays();
+
+            // フォント設定
+            setFontSize(Properties.Settings.Default.fontSize);           
         }
 
         public void refreshRemainDays()
@@ -69,11 +69,22 @@ namespace TaskListManager
         public void setFontSize(int size)
         {
             Font font = new Font("Meiryo UI", size);
+            Size strSize;
 
-            this.dateLabel.Font = font;
-            this.remainDayLabel.Font = font;
+            this.dateLabel.Font = font;         
+            this.remainDayLabel.Font = font;            
 
-            this.Height = (int)(font.Height * 2.0);
+            this.Height = font.Height * 2;
+
+            this.dateLabel.Height = this.Height;
+            strSize = TextRenderer.MeasureText(this.dateLabel.Text, font);
+            this.dateLabel.Width = strSize.Width + this.dateLabel.Padding.Left;
+            this.dateLabel.Location = new Point(0, 0);
+
+            this.remainDayLabel.Height = this.Height;
+            strSize = TextRenderer.MeasureText(this.remainDayLabel.Text, font);
+            this.remainDayLabel.Width = strSize.Width;
+            this.remainDayLabel.Location = new Point(this.Width - strSize.Width, 0);
         }
     }
 }

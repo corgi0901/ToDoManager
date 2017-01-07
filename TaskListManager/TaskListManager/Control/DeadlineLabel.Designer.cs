@@ -34,7 +34,7 @@
             // 
             // dateLabel
             // 
-            this.dateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dateLabel.ForeColor = System.Drawing.Color.AntiqueWhite;
             this.dateLabel.Location = new System.Drawing.Point(0, 0);
             this.dateLabel.Name = "dateLabel";
