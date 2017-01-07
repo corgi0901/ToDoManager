@@ -25,13 +25,26 @@ namespace TaskListManager
             this.settingView.okEvent += setting_okButton_Click;
             this.settingView.cancelEvent += setting_cancelButton_Click;
 
-            // ツールチップの設定
+            // フォームサイズの取得
+            System.Drawing.Size formSize = this.DisplayRectangle.Size;
+
+            // 各ボタンの設定
             this.addButtonToolTip.SetToolTip(this.addButton, "新規タスクの登録");
+
             this.settingButtonToolTip.SetToolTip(this.settingButton, "アプリケーション設定");
+            this.settingButton.Location = new System.Drawing.Point(formSize.Width - this.settingButton.Width - 10, this.settingButton.Location.Y);
 
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);
+            this.mainPanel.Size = new System.Drawing.Size(formSize.Width - 4, formSize.Height - this.mainPanel.Location.Y - 2);
 
             refreshTaskTable();
+        }
+
+        // フォームが閉じるときの処理
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 位置とサイズの設定を保存する
+            Properties.Settings.Default.Save();
         }
 
         // タスクの締め切り日時を画面上のリストに追加する

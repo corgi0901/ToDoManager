@@ -51,10 +51,10 @@
             this.taskListPanel.Location = new System.Drawing.Point(0, 0);
             this.taskListPanel.Margin = new System.Windows.Forms.Padding(0);
             this.taskListPanel.Name = "taskListPanel";
-            this.taskListPanel.RowCount = 2;
+            this.taskListPanel.RowCount = 1;
             this.taskListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.taskListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.taskListPanel.Size = new System.Drawing.Size(278, 120);
+            this.taskListPanel.Size = new System.Drawing.Size(280, 120);
             this.taskListPanel.TabIndex = 1;
             // 
             // mainPanel
@@ -65,13 +65,13 @@
             this.mainPanel.ColumnCount = 1;
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.mainPanel.Controls.Add(this.taskListPanel, 0, 0);
-            this.mainPanel.Location = new System.Drawing.Point(3, 41);
+            this.mainPanel.Location = new System.Drawing.Point(2, 40);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.RowCount = 2;
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainPanel.Size = new System.Drawing.Size(278, 519);
+            this.mainPanel.Size = new System.Drawing.Size(280, 518);
             this.mainPanel.TabIndex = 2;
             // 
             // refreshTimer
@@ -88,7 +88,7 @@
             this.settingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.settingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.settingButton.Location = new System.Drawing.Point(253, 8);
+            this.settingButton.Location = new System.Drawing.Point(253, 9);
             this.settingButton.Name = "settingButton";
             this.settingButton.Size = new System.Drawing.Size(23, 23);
             this.settingButton.TabIndex = 3;
@@ -102,7 +102,7 @@
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.addButton.Location = new System.Drawing.Point(9, 9);
+            this.addButton.Location = new System.Drawing.Point(10, 10);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(20, 20);
             this.addButton.TabIndex = 0;
@@ -121,13 +121,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 561);
+            this.ClientSize = global::TaskListManager.Properties.Settings.Default.MyClientSize;
             this.Controls.Add(this.settingButton);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.addButton);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::TaskListManager.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("ClientSize", global::TaskListManager.Properties.Settings.Default, "MyClientSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Location = global::TaskListManager.Properties.Settings.Default.MyLocation;
             this.MinimumSize = new System.Drawing.Size(300, 600);
             this.Name = "MainForm";
             this.Text = "ToDo List";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

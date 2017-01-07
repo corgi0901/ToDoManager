@@ -34,5 +34,29 @@ namespace TaskListManager.Properties {
                 this["fontSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 100")]
+        public global::System.Drawing.Point MyLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["MyLocation"]));
+            }
+            set {
+                this["MyLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("284, 561")]
+        public global::System.Drawing.Size MyClientSize {
+            get {
+                return ((global::System.Drawing.Size)(this["MyClientSize"]));
+            }
+            set {
+                this["MyClientSize"] = value;
+            }
+        }
     }
 }
