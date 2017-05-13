@@ -7,24 +7,42 @@ namespace TaskListManager
     public partial class TaskOptionPanel : UserControl
     {
         public delegate void optionButtonEventHandler();
+        public event optionButtonEventHandler returnEvent;
         public event optionButtonEventHandler doneEvent;
         public event optionButtonEventHandler editEvent;
+        public event optionButtonEventHandler deleteEvent;
 
         public TaskOptionPanel()
         {
             InitializeComponent();
+
+            // 背景画像の設定
+            setButtonImage(this.returnButton, Properties.Resources._return);
+            setButtonImage(this.doneButton,   Properties.Resources.checkbox);
+            setButtonImage(this.editButton,   Properties.Resources.edit);
+            setButtonImage(this.deleteButton, Properties.Resources.trash_box);
+
+            // ツールチップの設定
+            this.returnButtonToolTip.SetToolTip(this.returnButton, "戻る");
+            this.doneButtonToolTip.SetToolTip(this.doneButton, "完了");
+            this.editButtonToolTip.SetToolTip(this.editButton, "編集");
+            this.deleteButtonToolTip.SetToolTip(this.deleteButton, "削除");
         }
 
         public void setSize(int width, int height)
         {
             this.Size = new Size(width, height);
+        }
 
-            this.doneButton.Width = width;
-            this.doneButton.Height = height / 2;
-
-            this.editButton.Width = width;
-            this.editButton.Height = height / 2;
-            this.editButton.Location = new System.Drawing.Point(0, height / 2);
+        private void setButtonImage(Button button, Bitmap bmp)
+        {
+            int size = 25;
+            Bitmap resizeBmp = new Bitmap(size, size);
+            Graphics g = Graphics.FromImage(resizeBmp);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.DrawImage(bmp, 0, 0, size, size);
+            button.BackgroundImageLayout = ImageLayout.Center;
+            button.BackgroundImage = resizeBmp;
         }
 
         private void doneButton_Click(object sender, EventArgs e)
@@ -35,6 +53,16 @@ namespace TaskListManager
         private void editButton_Click(object sender, EventArgs e)
         {
             this.editEvent();
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            this.returnEvent();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            this.deleteEvent();
         }
     }
 }

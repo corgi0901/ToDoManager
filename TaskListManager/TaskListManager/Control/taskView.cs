@@ -8,7 +8,6 @@ namespace TaskListManager
 {
     public partial class TaskView : UserControl
     {
-        private Boolean isShowButton;
         private Label timeLabel;
         private Label taskLabel;
         private TaskOptionPanel optButton;
@@ -17,13 +16,11 @@ namespace TaskListManager
         public delegate void optionButtonEventHandler(object sender);
         public event optionButtonEventHandler doneButton_Click;
         public event optionButtonEventHandler editButton_Click;
+        public event optionButtonEventHandler deleteButton_Click;
 
         public TaskView(TaskItem taskItem)
         {
             InitializeComponent();
-
-            // 状態の初期設定
-            this.isShowButton = false;
 
             // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -47,15 +44,16 @@ namespace TaskListManager
 
             // オプションボタンの初期化
             this.optButton = new TaskOptionPanel();
-            this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             this.optButton.Margin = new Padding(0);
-            this.optButton.doneEvent += doneButtun_ClickEvent;
-            this.optButton.editEvent += editButtun_ClickEvent;
+            this.optButton.doneEvent += doneButton_ClickEvent;
+            this.optButton.editEvent += editButton_ClickEvent;
+            this.optButton.returnEvent += returnButton_ClickEvent;
+            this.optButton.deleteEvent += deleteButton_ClickEvent;
 
             // テーブルレイアウトに追加
             this.mainPanel.Controls.Add(this.timeLabel);
             this.mainPanel.Controls.Add(this.taskLabel);
-            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
 
             setFontSize(Properties.Settings.Default.fontSize);
 
@@ -100,57 +98,58 @@ namespace TaskListManager
         public void setFontSize(int size)
         {
             Font font = new Font("Meiryo UI", size);
+
             this.timeLabel.Font = font;
             this.taskLabel.Font = font;
-            this.Height = font.Height * 4;
+            
             this.mainPanel.ColumnStyles[0] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
-            this.mainPanel.ColumnStyles[1] = new ColumnStyle(SizeType.Absolute, font.Height * 4);
 
             int line = this.taskLabel.Text.Count(c => c == '\n') + 1;
-            this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 2));
 
-            this.optButton.setSize(this.taskLabel.Font.Height * 4, this.taskLabel.Height);
+            if (line < 2) line = 2;
+            this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 1));
         }
 
         // タスクの内容がクリックされたときの処理
         private void Task_Click(object sender, EventArgs e)
         {
-            if ( false == this.isShowButton )
-            {
-                this.mainPanel.SetColumnSpan(this.taskLabel, 1);
-                this.mainPanel.SetColumn(this.taskLabel, 2);
-                this.mainPanel.SetColumn(this.timeLabel, 1);
-                this.mainPanel.Controls.Add(this.optButton, 0, 0);
+            this.mainPanel.Controls.Clear();
+            this.mainPanel.Controls.Add(this.optButton, 0, 0);
+            this.mainPanel.SetColumnSpan(this.optButton, this.mainPanel.ColumnCount);
+        }
 
-                this.isShowButton = true;
-            }
-            else
-            {
-                this.mainPanel.Controls.Remove(this.optButton);
-                this.mainPanel.SetColumnSpan(this.taskLabel, 2);
+        private void showTaskContent()
+        {
+            this.mainPanel.Controls.Clear();
+            this.mainPanel.Controls.Add(this.timeLabel);
+            this.mainPanel.Controls.Add(this.taskLabel);
+        }
 
-                this.isShowButton = false;
-            }   
+        // 「戻る」ボタンをクリックしたときの処理
+        private void returnButton_ClickEvent()
+        {
+            this.showTaskContent();
         }
 
         // 「完了」ボタンをクリックしたときの処理
-        private void doneButtun_ClickEvent()
+        private void doneButton_ClickEvent()
         {
-            this.mainPanel.Controls.Remove(this.optButton);
-            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
-            this.isShowButton = false;
-
+            this.showTaskContent();
             doneButton_Click(this);
         }
 
         // 「編集」ボタンをクリックしたときの処理
-        private void editButtun_ClickEvent()
+        private void editButton_ClickEvent()
         {
-            this.mainPanel.Controls.Remove(this.optButton);
-            this.mainPanel.SetColumnSpan(this.taskLabel, 2);
-            this.isShowButton = false;
-
+            this.showTaskContent();
             editButton_Click(this);
+        }
+
+        // 「削除」ボタンをクリックしたときの処理
+        private void deleteButton_ClickEvent()
+        {
+            this.showTaskContent();
+            deleteButton_Click(this);
         }
     }
 }

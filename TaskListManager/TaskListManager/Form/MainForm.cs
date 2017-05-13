@@ -60,6 +60,7 @@ namespace TaskListManager
             TaskView view = new TaskView(task);
             view.doneButton_Click += done;
             view.editButton_Click += edit;
+            view.deleteButton_Click += delete;
             this.taskListPanel.Controls.Add(view);
         }
 
@@ -180,6 +181,18 @@ namespace TaskListManager
                 this.taskEditView.reflectTaskItem(taskItem);
             }
             showTaskEditView(EDIT_MODE.Edit);
+        }
+
+        // タスクの削除イベント
+        private void delete(object sender)
+        {
+            TaskView taskView = (TaskView)sender;
+            TaskManager manager = TaskManager.getInstance();
+
+            manager.deleteTaskById(taskView.getTaskItemID());
+
+            manager.saveTaskList();
+            refreshTaskTable();
         }
 
         // タスク期限表示の更新のタイマーイベント

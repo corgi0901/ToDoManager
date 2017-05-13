@@ -32,10 +32,10 @@
             this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-            this.settingButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
             this.addButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.settingButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.settingButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,14 @@
             this.refreshTimer.Interval = 60000;
             this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
             // 
+            // addButtonToolTip
+            // 
+            this.addButtonToolTip.IsBalloon = true;
+            // 
+            // settingButtonToolTip
+            // 
+            this.settingButtonToolTip.IsBalloon = true;
+            // 
             // settingButton
             // 
             this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -108,14 +116,6 @@
             this.addButton.TabIndex = 0;
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // addButtonToolTip
-            // 
-            this.addButtonToolTip.IsBalloon = true;
-            // 
-            // settingButtonToolTip
-            // 
-            this.settingButtonToolTip.IsBalloon = true;
             // 
             // MainForm
             // 
