@@ -11,5 +11,8 @@
     <Setting Name="MyClientSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">284, 561</Value>
     </Setting>
+    <Setting Name="taskNum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

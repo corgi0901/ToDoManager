@@ -89,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\SettingEventArgs.cs" />
     <Compile Include="src\TaskItem.cs" />
     <Compile Include="src\TaskManager.cs" />
     <EmbeddedResource Include="Control\DeadlineLabel.resx">

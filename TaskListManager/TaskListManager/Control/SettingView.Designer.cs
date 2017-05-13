@@ -33,7 +33,10 @@
             this.fontSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.taskNumNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.fontSizeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskNumNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,7 +86,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(5, 79);
+            this.okButton.Location = new System.Drawing.Point(5, 126);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 3;
@@ -93,7 +96,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(86, 79);
+            this.cancelButton.Location = new System.Drawing.Point(86, 126);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -101,11 +104,39 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(175, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "表示するタスクの最大数（1 ～ 100）";
+            // 
+            // taskNumNumericUpDown
+            // 
+            this.taskNumNumericUpDown.Location = new System.Drawing.Point(5, 101);
+            this.taskNumNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.taskNumNumericUpDown.Name = "taskNumNumericUpDown";
+            this.taskNumNumericUpDown.Size = new System.Drawing.Size(120, 19);
+            this.taskNumNumericUpDown.TabIndex = 6;
+            this.taskNumNumericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // SettingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.taskNumNumericUpDown);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.fontSizeNumericUpDown);
@@ -113,8 +144,9 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.Name = "SettingView";
-            this.Size = new System.Drawing.Size(176, 111);
+            this.Size = new System.Drawing.Size(176, 161);
             ((System.ComponentModel.ISupportInitialize)(this.fontSizeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskNumNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +159,7 @@
         private System.Windows.Forms.NumericUpDown fontSizeNumericUpDown;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown taskNumNumericUpDown;
     }
 }

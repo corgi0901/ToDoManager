@@ -136,9 +136,12 @@ namespace TaskListManager
             this.taskListPanel.Controls.Clear();
             
             DateTime date = new DateTime();
+            int max = Properties.Settings.Default.taskNum;
 
-            foreach(TaskItem task in taskList)
+            for(int i = 0; i < taskList.Count && i < max; i++)
             {
+                TaskItem task = taskList[i];
+
                 if(task.Deadline.Date != date)
                 {
                     addDateView(task.Deadline.Date);
@@ -246,6 +249,15 @@ namespace TaskListManager
 
         private void setting_okButton_Click(object sender, EventArgs e)
         {
+            SettingEventArgs args = (SettingEventArgs)e;
+
+            hideSettingView();
+
+            if(args.changeTaskNum)
+            {
+                this.refreshTaskTable();
+            }
+           
             // フォントサイズを反映する
             this.settingView.setFontSize(Properties.Settings.Default.fontSize);
             this.taskEditView.setFontSize(Properties.Settings.Default.fontSize);
@@ -263,8 +275,6 @@ namespace TaskListManager
                     ((TaskView)control).setFontSize(Properties.Settings.Default.fontSize);
                 }
             }
-
-            hideSettingView();
 
             // スクロール領域の再設定
             this.taskListPanel.AutoScroll = false;
