@@ -62,6 +62,7 @@ namespace TaskListManager
             view.editButton_Click += edit;
             view.deleteButton_Click += delete;
             this.taskListPanel.Controls.Add(view);
+			TaskViewManager.getInstance().addTaskView(view);
         }
 
         // タスクの編集画面を表示する
@@ -80,6 +81,8 @@ namespace TaskListManager
             this.addButton.BackgroundImage = Properties.Resources.plus_disable;
 
             this.taskEditView.setEditMode(mode);
+
+			TaskViewManager.getInstance().setTaskViewLock(true);
         }
 
         // タスクの編集画面を非表示にする
@@ -94,13 +97,16 @@ namespace TaskListManager
 
             this.addButton.Enabled = true;
             this.addButton.BackgroundImage = Properties.Resources.plus_enable;
-        }
+
+			TaskViewManager.getInstance().setTaskViewLock(false);
+		}
 
         // 「タスクの追加」ボタンを押したときのイベント
         private void addButton_Click(object sender, EventArgs e)
         {
             showTaskEditView(EDIT_MODE.New);
-        }
+			TaskViewManager.getInstance().hideAllMenuContent();
+		}
 
         // タスク追加画面で「OK」ボタンを押したときのイベント
         private void okButton_Click(object sender, EventArgs e)
@@ -122,8 +128,8 @@ namespace TaskListManager
 
             hideTaskEditView();
 
-            // 画面の更新
-            refreshTaskTable();
+			// 画面の更新
+			refreshTaskTable();
         }
 
         // タスクリスト表示の更新
@@ -134,6 +140,7 @@ namespace TaskListManager
 
             // タスクリストの全コントロールを削除
             this.taskListPanel.Controls.Clear();
+			TaskViewManager.getInstance().clear();
             
             DateTime date = new DateTime();
             int max = Properties.Settings.Default.taskNum;
@@ -159,7 +166,7 @@ namespace TaskListManager
         private void cancelButton_Click(object sender, EventArgs e)
         {
             hideTaskEditView();
-        }
+		}
 
         // タスクの完了イベント
         private void done(object sender)
@@ -168,7 +175,6 @@ namespace TaskListManager
             TaskManager manager = TaskManager.getInstance();
 
             manager.completeTaskById(taskView.getTaskItemID());
-            
             manager.saveTaskList();
 
             refreshTaskTable();
@@ -231,7 +237,10 @@ namespace TaskListManager
 
             this.addButton.Enabled = false;
             this.addButton.BackgroundImage = Properties.Resources.plus_disable;
-        }
+
+			TaskViewManager.getInstance().hideAllMenuContent();
+			TaskViewManager.getInstance().setTaskViewLock(true);
+		}
 
         // タスクの編集画面を非表示にする
         private void hideSettingView()
@@ -245,7 +254,9 @@ namespace TaskListManager
 
             this.addButton.Enabled = true;
             this.addButton.BackgroundImage = Properties.Resources.plus_enable;
-        }
+
+			TaskViewManager.getInstance().setTaskViewLock(false);
+		}
 
         private void setting_okButton_Click(object sender, EventArgs e)
         {
@@ -276,14 +287,14 @@ namespace TaskListManager
                 }
             }
 
-            // スクロール領域の再設定
-            this.taskListPanel.AutoScroll = false;
+			// スクロール領域の再設定
+			this.taskListPanel.AutoScroll = false;
             this.taskListPanel.AutoScroll = true;
         }
 
         private void setting_cancelButton_Click(object sender, EventArgs e)
         {
             hideSettingView();
-        }
+		}
     }
 }

@@ -12,6 +12,8 @@ namespace TaskListManager
         private Label taskLabel;
         private TaskOptionPanel optButton;
         private long ID;
+		private bool isShowMenu;
+		private bool isLock;
 
         public delegate void optionButtonEventHandler(object sender);
         public event optionButtonEventHandler doneButton_Click;
@@ -21,6 +23,9 @@ namespace TaskListManager
         public TaskView(TaskItem taskItem)
         {
             InitializeComponent();
+
+			this.isShowMenu = false;
+			this.isLock = false;
 
             // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -110,19 +115,46 @@ namespace TaskListManager
             this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 1));
         }
 
+		public void hideMenuContent()
+		{
+			if(this.isShowMenu == true)
+			{
+				this.showTaskContent();
+			}		
+		}
+
+		public void setLock(bool value)
+		{
+			this.isLock = value;
+		}
+
         // タスクの内容がクリックされたときの処理
         private void Task_Click(object sender, EventArgs e)
         {
-            this.mainPanel.Controls.Clear();
-            this.mainPanel.Controls.Add(this.optButton, 0, 0);
-            this.mainPanel.SetColumnSpan(this.optButton, this.mainPanel.ColumnCount);
+			this.showMenuContent();
         }
+
+		private void showMenuContent()
+		{
+			if (this.isLock)
+			{
+				return;
+			}
+
+			this.mainPanel.Controls.Clear();
+			this.mainPanel.Controls.Add(this.optButton, 0, 0);
+			this.mainPanel.SetColumnSpan(this.optButton, this.mainPanel.ColumnCount);
+			this.isShowMenu = true;
+
+			TaskViewManager.getInstance().indicateShowMenu(this);
+		}
 
         private void showTaskContent()
         {
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(this.timeLabel);
             this.mainPanel.Controls.Add(this.taskLabel);
+			this.isShowMenu = false;
         }
 
         // 「戻る」ボタンをクリックしたときの処理
