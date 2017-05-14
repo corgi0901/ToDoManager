@@ -25,9 +25,9 @@ namespace TaskListManager
 
             System.Drawing.Size formSize = this.DisplayRectangle.Size;
 
-            this.addButtonToolTip.SetToolTip(this.addButton, "新規タスクの登録");
+            this.buttonToolTip.SetToolTip(this.addButton,     "新規タスクの登録");
+            this.buttonToolTip.SetToolTip(this.settingButton, "アプリケーション設定");
 
-            this.settingButtonToolTip.SetToolTip(this.settingButton, "アプリケーション設定");
             this.settingButton.Location = new System.Drawing.Point(formSize.Width - this.settingButton.Width - 10, this.settingButton.Location.Y);
 
             this.mainPanel.SetRowSpan(this.taskListPanel, 2);

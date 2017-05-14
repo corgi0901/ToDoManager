@@ -32,8 +32,7 @@
 			this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-			this.addButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.settingButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.buttonToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.settingButton = new System.Windows.Forms.Button();
 			this.addButton = new System.Windows.Forms.Button();
 			this.mainPanel.SuspendLayout();
@@ -79,14 +78,6 @@
 			this.refreshTimer.Enabled = true;
 			this.refreshTimer.Interval = 60000;
 			this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
-			// 
-			// addButtonToolTip
-			// 
-			this.addButtonToolTip.IsBalloon = true;
-			// 
-			// settingButtonToolTip
-			// 
-			this.settingButtonToolTip.IsBalloon = true;
 			// 
 			// settingButton
 			// 
@@ -144,8 +135,7 @@
         private System.Windows.Forms.TableLayoutPanel mainPanel;
         private System.Windows.Forms.Timer refreshTimer;
         private System.Windows.Forms.Button settingButton;
-        private System.Windows.Forms.ToolTip addButtonToolTip;
-        private System.Windows.Forms.ToolTip settingButtonToolTip;
+        private System.Windows.Forms.ToolTip buttonToolTip;
     }
 }
 

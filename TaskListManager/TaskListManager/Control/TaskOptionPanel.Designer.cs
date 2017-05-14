@@ -34,10 +34,7 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.returnButton = new System.Windows.Forms.Button();
 			this.deleteButton = new System.Windows.Forms.Button();
-			this.returnButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.doneButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.editButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.deleteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.buttonToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -155,9 +152,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button returnButton;
-        private System.Windows.Forms.ToolTip returnButtonToolTip;
-        private System.Windows.Forms.ToolTip doneButtonToolTip;
-        private System.Windows.Forms.ToolTip editButtonToolTip;
-        private System.Windows.Forms.ToolTip deleteButtonToolTip;
+        private System.Windows.Forms.ToolTip buttonToolTip;
     }
 }

@@ -21,10 +21,10 @@ namespace TaskListManager
             setButtonImage(this.editButton,   Properties.Resources.edit);
             setButtonImage(this.deleteButton, Properties.Resources.trash_box);
 
-            this.returnButtonToolTip.SetToolTip(this.returnButton, "戻る");
-            this.doneButtonToolTip.SetToolTip(this.doneButton, "完了");
-            this.editButtonToolTip.SetToolTip(this.editButton, "編集");
-            this.deleteButtonToolTip.SetToolTip(this.deleteButton, "削除");
+            this.buttonToolTip.SetToolTip(this.returnButton, "戻る");
+            this.buttonToolTip.SetToolTip(this.doneButton,   "完了");
+            this.buttonToolTip.SetToolTip(this.editButton,   "編集");
+            this.buttonToolTip.SetToolTip(this.deleteButton, "削除");
         }
 
         public void setSize(int width, int height)
