@@ -16,13 +16,11 @@ namespace TaskListManager
         {
             InitializeComponent();
 
-            // 背景画像の設定
             setButtonImage(this.returnButton, Properties.Resources._return);
             setButtonImage(this.doneButton,   Properties.Resources.checkbox);
             setButtonImage(this.editButton,   Properties.Resources.edit);
             setButtonImage(this.deleteButton, Properties.Resources.trash_box);
 
-            // ツールチップの設定
             this.returnButtonToolTip.SetToolTip(this.returnButton, "戻る");
             this.doneButtonToolTip.SetToolTip(this.doneButton, "完了");
             this.editButtonToolTip.SetToolTip(this.editButton, "編集");

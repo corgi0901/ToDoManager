@@ -27,11 +27,9 @@ namespace TaskListManager
 			this.isShowMenu = false;
 			this.isLock = false;
 
-            // ビュー全体のレイアウト設定
             this.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             this.Margin = new Padding(0, 0, 0, 3);
 
-            // 時刻表示部の初期化
             this.timeLabel = new Label();
             this.timeLabel.TextAlign = ContentAlignment.MiddleCenter;
             this.timeLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
@@ -39,7 +37,6 @@ namespace TaskListManager
             this.timeLabel.Padding = new Padding(0, 0, 0, 0);
             this.timeLabel.Click += Task_Click;
 
-            // タスク表示部の初期化
             this.taskLabel = new Label();
             this.taskLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.taskLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
@@ -47,7 +44,6 @@ namespace TaskListManager
             this.taskLabel.Padding = new Padding(0, 0, 0, 0);
             this.taskLabel.Click += Task_Click;
 
-            // オプションボタンの初期化
             this.optButton = new TaskOptionPanel();
             this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             this.optButton.Margin = new Padding(0);
@@ -56,23 +52,19 @@ namespace TaskListManager
             this.optButton.returnEvent += returnButton_ClickEvent;
             this.optButton.deleteEvent += deleteButton_ClickEvent;
 
-            // テーブルレイアウトに追加
             this.mainPanel.Controls.Add(this.timeLabel);
             this.mainPanel.Controls.Add(this.taskLabel);
 
             setFontSize(Properties.Settings.Default.fontSize);
 
-            // タスクの内容を反映
             setTaskItem(taskItem);
         }
 
-        // 表示されているタスクを取得する
         public long getTaskItemID()
         {
             return this.ID;
         }
 
-        // 表示するタスクを設定する
         public void setTaskItem(TaskItem taskItem)
         {
             this.ID = taskItem.ID;
@@ -128,7 +120,6 @@ namespace TaskListManager
 			this.isLock = value;
 		}
 
-        // タスクの内容がクリックされたときの処理
         private void Task_Click(object sender, EventArgs e)
         {
 			this.showMenuContent();
@@ -157,27 +148,23 @@ namespace TaskListManager
 			this.isShowMenu = false;
         }
 
-        // 「戻る」ボタンをクリックしたときの処理
         private void returnButton_ClickEvent()
         {
             this.showTaskContent();
         }
 
-        // 「完了」ボタンをクリックしたときの処理
         private void doneButton_ClickEvent()
         {
             this.showTaskContent();
             doneButton_Click(this);
         }
 
-        // 「編集」ボタンをクリックしたときの処理
         private void editButton_ClickEvent()
         {
             this.showTaskContent();
             editButton_Click(this);
         }
 
-        // 「削除」ボタンをクリックしたときの処理
         private void deleteButton_ClickEvent()
         {
             this.showTaskContent();

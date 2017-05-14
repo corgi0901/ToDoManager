@@ -87,36 +87,16 @@ namespace TaskListManager
             this.cancelButton.Height = strSize.Height + 10;
             this.cancelButton.Width = strSize.Width + 20;
 
-            // タイトルラベルの位置
-            this.titleLabel.Location = new Point(0, 0);
-
-            // 「タスク」ラベルの位置
+            this.titleLabel.Location = new Point(0, 0);        
             this.label1.Location = new Point(5, this.titleLabel.Location.Y + this.titleLabel.Height + 5);
-            
-            // テキストボックスの位置
             this.taskTextBox.Location = new Point(5, this.label1.Location.Y + this.label1.Height + 3);
-
-            //「期限」ラベルの位置
-            this.label2.Location = new Point(5, this.taskTextBox.Location.Y + this.taskTextBox.Height + 5);
-
-            // DatePickerの位置
+			this.label2.Location = new Point(5, this.taskTextBox.Location.Y + this.taskTextBox.Height + 5);
             this.datePicker.Location = new Point(5, this.label2.Location.Y + this.label2.Height + 3);
-
-            // timepickerの位置
             this.timePicker.Location = new Point(this.datePicker.Location.X + this.datePicker.Width + 3, this.datePicker.Location.Y);
-
-            // 「繰り返し」ラベルの位置
             this.label3.Location = new Point(5, this.datePicker.Location.Y + this.datePicker.Height + 5);
-
-            // comboboxの位置
             this.repeatComboBox.Location = new Point(this.label3.Location.X, this.label3.Location.Y + this.label3.Height + 3);
-
-            // OKボタンの位置
             this.okButton.Location = new Point(5, this.repeatComboBox.Location.Y + this.repeatComboBox.Height + 5);
-
-            // Cancelボタンの位置
             this.cancelButton.Location = new Point(this.okButton.Location.X + this.okButton.Width + 3, this.okButton.Location.Y);
-
             this.Height = this.okButton.Location.Y + this.okButton.Height + 10;
         }
 
@@ -132,7 +112,6 @@ namespace TaskListManager
             }
         }
 
-        // 指定されたタスクの内容をビューに反映する
         public void reflectTaskItem(TaskItem task)
         {
             this.Task = task.Task;
@@ -155,7 +134,6 @@ namespace TaskListManager
             return new DateTime(day.Year, day.Month, day.Day, time.Hour, time.Minute, 0);
         }
 
-        // 諸々の設定をリセット
         private void reset()
         {
             this.taskTextBox.Text = "";
