@@ -28,13 +28,16 @@ namespace TaskListManager.Control
         public void setFontSize(int size)
         {
             Font font = new Font("Meiryo UI", size);
-            Size strSize;
+            Size strSize = TextRenderer.MeasureText(this.label1.Text, font);
+			int categoryLabelHeight = (int)(strSize.Height * 1.5);
 
-            this.label1.Font = font;
-            strSize = TextRenderer.MeasureText(this.label1.Text, font);
-            this.label1.Height = (int)(strSize.Height * 1.5);
+			this.label1.Font = font;
+			this.label1.Height = categoryLabelHeight;
 
-            this.label2.Font = font;
+			this.viewSettingLabel.Font = font;
+			this.viewSettingLabel.Height = categoryLabelHeight;
+
+			this.label2.Font = font;
             this.label2.Height = font.Height;
 
             this.fontSizeNumericUpDown.Font = font;
@@ -58,13 +61,15 @@ namespace TaskListManager.Control
 
             this.label1.Location = new Point(0, 0);
 
-            this.label2.Location = new Point(5, this.label1.Location.Y + this.label1.Height + 5);
+			this.viewSettingLabel.Location = new Point(0, this.label1.Location.Y + this.label1.Height);
+
+			this.label2.Location = new Point(5, this.viewSettingLabel.Location.Y + this.viewSettingLabel.Height + 5);
             this.fontSizeNumericUpDown.Location = new Point(this.label2.Location.X, this.label2.Location.Y + this.label2.Height + 3);
 
             this.label3.Location = new Point(5, this.fontSizeNumericUpDown.Location.Y + this.fontSizeNumericUpDown.Height + 5);
             this.taskNumNumericUpDown.Location = new Point(this.label3.Location.X, this.label3.Location.Y + this.label3.Height + 3);
 
-            this.okButton.Location = new Point(this.taskNumNumericUpDown.Location.X, this.taskNumNumericUpDown.Location.Y + this.taskNumNumericUpDown.Height + 5);
+            this.okButton.Location = new Point(this.taskNumNumericUpDown.Location.X, this.taskNumNumericUpDown.Location.Y + this.taskNumNumericUpDown.Height + 10);
             this.cancelButton.Location = new Point(this.okButton.Location.X + this.okButton.Width + 5, this.okButton.Location.Y);
 
             this.Height = this.okButton.Location.Y + this.okButton.Height + 10;
