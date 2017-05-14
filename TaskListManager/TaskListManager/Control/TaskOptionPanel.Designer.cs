@@ -100,7 +100,7 @@
 			this.returnButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.returnButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
+			this.returnButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
 			this.returnButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.returnButton.FlatAppearance.BorderSize = 0;
 			this.returnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
