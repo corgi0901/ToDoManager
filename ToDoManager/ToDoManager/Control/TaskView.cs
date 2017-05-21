@@ -111,10 +111,10 @@ namespace ToDoManager
 
         private void Task_Click(object sender, EventArgs e)
         {
-			this.showMenuContent();
+			this.showOptionContent();
         }
 
-		private void showMenuContent()
+		private void showOptionContent()
 		{
 			if (this.isLock)
 			{
