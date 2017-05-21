@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.taskListPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.refreshTimer = new System.Windows.Forms.Timer(this.components);
@@ -118,6 +119,7 @@
 			this.Controls.Add(this.addButton);
 			this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ToDoManager.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.DataBindings.Add(new System.Windows.Forms.Binding("ClientSize", global::ToDoManager.Properties.Settings.Default, "MyClientSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Location = global::ToDoManager.Properties.Settings.Default.MyLocation;
 			this.MinimumSize = new System.Drawing.Size(300, 600);
 			this.Name = "MainForm";
