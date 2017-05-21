@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using TaskListManager.src;
-using TaskListManager.Control;
+using ToDoManager.src;
+using ToDoManager.Control;
 
-namespace TaskListManager
+namespace ToDoManager
 {
     public partial class MainForm : Form
     {

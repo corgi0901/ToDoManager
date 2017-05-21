@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using TaskListManager.src;
+using ToDoManager.src;
 
-namespace TaskListManager
+namespace ToDoManager
 {
     public partial class TaskView : UserControl
     {

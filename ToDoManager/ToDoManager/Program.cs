@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace TaskListManager
+namespace ToDoManager
 {
     static class Program
     {

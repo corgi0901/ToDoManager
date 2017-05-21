@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TaskListManager
+namespace ToDoManager
 {
     public partial class TaskOptionPanel : UserControl
     {

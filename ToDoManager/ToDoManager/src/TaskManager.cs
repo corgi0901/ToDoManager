@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 
-namespace TaskListManager.src
+namespace ToDoManager.src
 {
     class TaskManager
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskListManager.src
+namespace ToDoManager.src
 {
     public enum REPEAT_TYPE
     {

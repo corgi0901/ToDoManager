@@ -7,8 +7,8 @@
     <ProjectGuid>{F349B595-81D6-49D6-AFC3-C1A77E67539A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TaskListManager</RootNamespace>
-    <AssemblyName>TaskListManager</AssemblyName>
+    <RootNamespace>ToDoManager</RootNamespace>
+    <AssemblyName>ToDoManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

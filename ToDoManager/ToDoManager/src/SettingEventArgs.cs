@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskListManager.src
+namespace ToDoManager.src
 {
     class SettingEventArgs : EventArgs
     {

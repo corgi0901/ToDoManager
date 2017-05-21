@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TaskListManager.src
+namespace ToDoManager.src
 {
 	class TaskViewManager
     {

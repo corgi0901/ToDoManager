@@ -1,4 +1,4 @@
-﻿namespace TaskListManager
+﻿namespace ToDoManager
 {
     partial class TaskEditView
     {

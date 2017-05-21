@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskListManager", "TaskListManager\TaskListManager.csproj", "{F349B595-81D6-49D6-AFC3-C1A77E67539A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager", "ToDoManager\ToDoManager.csproj", "{F349B595-81D6-49D6-AFC3-C1A77E67539A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

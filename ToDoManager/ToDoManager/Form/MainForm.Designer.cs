@@ -1,4 +1,4 @@
-﻿namespace TaskListManager
+﻿namespace ToDoManager
 {
     partial class MainForm
     {
@@ -83,7 +83,7 @@
 			// 
 			this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.settingButton.BackColor = System.Drawing.SystemColors.Control;
-			this.settingButton.BackgroundImage = global::TaskListManager.Properties.Resources.setting_enable;
+			this.settingButton.BackgroundImage = global::ToDoManager.Properties.Resources.setting_enable;
 			this.settingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.settingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.settingButton.ForeColor = System.Drawing.SystemColors.Control;
@@ -96,7 +96,7 @@
 			// 
 			// addButton
 			// 
-			this.addButton.BackgroundImage = global::TaskListManager.Properties.Resources.plus_enable;
+			this.addButton.BackgroundImage = global::ToDoManager.Properties.Resources.plus_enable;
 			this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.addButton.FlatAppearance.BorderSize = 0;
 			this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,16 +112,16 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = global::TaskListManager.Properties.Settings.Default.MyClientSize;
+			this.ClientSize = global::ToDoManager.Properties.Settings.Default.MyClientSize;
 			this.Controls.Add(this.settingButton);
 			this.Controls.Add(this.mainPanel);
 			this.Controls.Add(this.addButton);
-			this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::TaskListManager.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.DataBindings.Add(new System.Windows.Forms.Binding("ClientSize", global::TaskListManager.Properties.Settings.Default, "MyClientSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.Location = global::TaskListManager.Properties.Settings.Default.MyLocation;
+			this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ToDoManager.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.DataBindings.Add(new System.Windows.Forms.Binding("ClientSize", global::ToDoManager.Properties.Settings.Default, "MyClientSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.Location = global::ToDoManager.Properties.Settings.Default.MyLocation;
 			this.MinimumSize = new System.Drawing.Size(300, 600);
 			this.Name = "MainForm";
-			this.Text = "ToDo List";
+			this.Text = "ToDoManager";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.mainPanel.ResumeLayout(false);
 			this.ResumeLayout(false);

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskListManager
+namespace ToDoManager
 {
     public partial class DeadlineLabel : UserControl
     {

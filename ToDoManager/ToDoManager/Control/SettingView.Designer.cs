@@ -1,4 +1,4 @@
-﻿namespace TaskListManager.Control
+﻿namespace ToDoManager.Control
 {
     partial class SettingView
     {

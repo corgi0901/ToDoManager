@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TaskListManager.src;
+using ToDoManager.src;
 
-namespace TaskListManager.Control
+namespace ToDoManager.Control
 {
     public partial class SettingView : UserControl
     {
