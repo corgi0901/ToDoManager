@@ -10,7 +10,6 @@ namespace ToDoManager
     {
         private Label timeLabel;
         private Label taskLabel;
-        private TaskOptionPanel optButton;
         private long ID;
 		private bool isShowMenu;
 		private bool isLock;
@@ -44,14 +43,6 @@ namespace ToDoManager
             this.taskLabel.Padding = new Padding(0, 0, 0, 0);
             this.taskLabel.Click += Task_Click;
 
-            this.optButton = new TaskOptionPanel();
-            this.optButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            this.optButton.Margin = new Padding(0);
-            this.optButton.doneEvent += doneButton_ClickEvent;
-            this.optButton.editEvent += editButton_ClickEvent;
-            this.optButton.returnEvent += returnButton_ClickEvent;
-            this.optButton.deleteEvent += deleteButton_ClickEvent;
-
             this.mainPanel.Controls.Add(this.timeLabel);
             this.mainPanel.Controls.Add(this.taskLabel);
 
@@ -74,8 +65,6 @@ namespace ToDoManager
 
             int line = taskItem.Task.Count(c => c == '\n') + 1;
             this.Height = (int)(this.taskLabel.Font.GetHeight() * (line + 2));
-
-            this.optButton.setSize(this.taskLabel.Font.Height * 4, this.taskLabel.Height);
 
             switch (taskItem.RepeatType)
             {
@@ -133,8 +122,9 @@ namespace ToDoManager
 			}
 
 			this.mainPanel.Controls.Clear();
-			this.mainPanel.Controls.Add(this.optButton, 0, 0);
-			this.mainPanel.SetColumnSpan(this.optButton, this.mainPanel.ColumnCount);
+			TaskOptionPanel opt = createOptionPanel();
+			this.mainPanel.Controls.Add(opt, 0, 0);
+			this.mainPanel.SetColumnSpan(opt, this.mainPanel.ColumnCount);
 			this.isShowMenu = true;
 
 			TaskViewManager.getInstance().indicateShowMenu(this);
@@ -170,5 +160,18 @@ namespace ToDoManager
             this.showTaskContent();
             deleteButton_Click(this);
         }
+
+		private TaskOptionPanel createOptionPanel()
+		{
+			TaskOptionPanel view = new TaskOptionPanel();
+			view.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+			view.Margin = new Padding(0);
+			view.doneEvent += doneButton_ClickEvent;
+			view.editEvent += editButton_ClickEvent;
+			view.returnEvent += returnButton_ClickEvent;
+			view.deleteEvent += deleteButton_ClickEvent;
+
+			return view;
+		}
     }
 }
