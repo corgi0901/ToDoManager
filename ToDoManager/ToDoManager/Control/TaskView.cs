@@ -59,7 +59,9 @@ namespace ToDoManager
         public void setTaskItem(TaskItem taskItem)
         {
             this.ID = taskItem.ID;
-            this.timeLabel.Text = taskItem.Deadline.TimeOfDay.ToString(@"hh\:mm");
+            int hour = taskItem.Deadline.TimeOfDay.Hours;
+            int minute = taskItem.Deadline.TimeOfDay.Minutes;
+            this.timeLabel.Text = hour.ToString("D2") + ":" + minute.ToString("D2");
 
             this.taskLabel.Text = taskItem.Task;
 

@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ToDoManager.src;
-using ToDoManager.Control;
 
 namespace ToDoManager
 {
